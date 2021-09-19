@@ -31,24 +31,47 @@
         </div>
 
         <br>
-        <!-- <br><br><br> -->
+        
+        <% let introContentInitial = 'Keep yourself and your loved ones safe, protected by our polished professionals.' %>
+        <%- include('./partials/introPartialTop.ejs', {contentInitial: introContentInitial}) %>
+
+            <p>
+                Contra quos omnis dicendum breviter existimo. 
+                Quamquam philosophiae quidem vituperatoribus satis responsum est eo libro,
+                quo a nobis philosophia defensa et collaudata est, 
+                cum esset accusata et vituperata ab Hortensio. 
+            </p>    
+            <p>
+                qui liber cum et tibi probatus videretur et iis, 
+                quos ego posse iudicare arbitrarer, plura suscepi veritus ne movere hominum studia viderer, retinere non posse.
+            </p>
+            <p>
+                <em>
+                    To find out more, scroll down, or click one of the choices above!
+                </em>
+            </p>
+
+        <%- include('./partials/introPartialBottom.ejs') %>
+
+        <%- include('./partials/informationBoxTop.ejs', {contentInitial: 'asoifnqoin eofgoqer gieqhg e', divTitle:'Generic Service'}) %>
+            <p>
+                parag oewrgoer gore goerhg ohrg oirwt hoirth ortho gjo rjgoire goerhg
+                ieurg eiurgh oeqijg oitjgo
+                eirugh oeij goeijrgoierjgoeqirjgoqejgoijogdvoijndn  iohre gooiertgj oeqrjg i  oerigj eoqirjg orei 
+            </p>
+        <%- include('./partials/informationBoxBottom.ejs') %>
 
         <div class='infoOverallDiv'>
             <div class='infoBox'>
                 <div class='infoTextBox'>
                     <br>
-                    <!-- comment out the <br> immediately above if using an h1 immediately below -->
                     <div class='greenLeftBorder'>
-                        <!-- <h1>Executive Protection Services</h1> -->
                         <div class='infoText'>
                             <br>
                             <em>
                                 Keep yourself and your loved ones safe, protected by our polished professionals.
                             </em>
                         </div>
-                        <%- include('./partials/randompartial.ejs', {individualPartialMessage: 'first partial'}) %>
-                        <%- include('./partials/randompartial.ejs', {individualPartialMessage: 'partial in the middle'}) %>
-                        <%- include('./partials/randompartial.ejs', {individualPartialMessage: 'third partial'}) %>
                         <div class='infoText'>
                             <p>
                                 Contra quos omnis dicendum breviter existimo. 

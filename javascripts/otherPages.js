@@ -10,7 +10,7 @@ function scrollAndOffset(place, pixels) {
 document.getElementsByClassName('logoAtTopOtherPages')[0].addEventListener('click', goHome);
 
 function goHome() {
-    window.location.href = "../main.html"
+    window.location.href = "../"
 }
 
 const btnsToBuyPage = document.getElementsByClassName('btnToBuyPage');
