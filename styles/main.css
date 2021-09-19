@@ -1,0 +1,381 @@
+:root {
+    --myGrey: rgb(242, 242, 242);
+    /* --myRed:  rgb(194, 0, 0); */
+    --themeColour: green;
+    --buttonGreen: #93c572;
+    --lumiGreen: #a6ff00;
+}
+
+a, a:visited {
+    text-decoration: none !important;
+}
+
+body {
+    margin: 0px;
+    width: 100vw;
+}
+
+.banner {
+    width: 100vw;
+}
+
+#belowHeadBanner, .belowHeadBannerOtherPages {
+    position: relative;
+    top: -25px;
+    position: relative;
+    top: 100px;
+}
+
+.boldText {
+    font-weight: bold;
+}
+
+/* .borderBox {
+    box-sizing: border-box;
+} */
+
+.btnToBuyPage {
+    background-color: var(--buttonGreen);
+    font-size: 20px;
+    width: 44%;
+    min-width: 220px;
+    height: 55px;
+    border-radius: 33%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.btnToBuyPage:hover {
+    background-color: green;
+    cursor: pointer;
+}
+
+.centredContent {
+    display: flex;
+    justify-content: center;
+}
+
+.centredText {
+    text-align: center;
+}
+
+#contactBtn {
+    min-width: 20vw;
+    min-height: 50px;
+    border-radius: 33%;
+    font-size: 22px;
+    background-color: var(--myGrey);
+}
+
+#contactBtn:hover {
+    background-color: rgb(188, 188, 188);
+    cursor: pointer;
+}
+
+.contactBtnOtherPage {
+    background-color: var(--buttonGreen);
+    font-size: 20px;
+    width: 44%;
+    min-width: 220px;
+    height: 55px;
+    border-radius: 33%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.contactBtnOtherPage:hover {
+    background-color: rgb(1, 163, 1);
+    cursor: pointer;
+}
+
+.contactBtnOtherPage:active {
+    background-color: rgb(1, 80, 1);
+    border: solid 2px black;
+    cursor: pointer;
+}
+
+#contactBtnDiv {
+    padding: 30px;
+}
+
+#contactTextDiv {
+    font-size: calc(16px + 0.8vw);
+    box-sizing: border-box;
+    padding: 0vw 1.8vw;
+}
+
+/* .flexColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+} */
+
+.footDiv {
+    padding: 25px;
+}
+
+.green {
+    background-color: green;
+    text-shadow: -1.5px -1.5px 0 var(--lumiGreen), 1.5px -1.5px 0 var(--lumiGreen), -1.5px 1.5px 0 var(--lumiGreen), 1.5px 1.5px 0 var(--lumiGreen);
+}
+
+.greenLeftBorder {
+    border-left: 14px solid green;
+    padding-left: 14px;
+}
+
+/* .greenRightBorder {
+    border-right: 14px solid green;
+    padding-right: 14px;
+} */
+
+#headBanner, .headBannerOtherPages {
+    background-color: var(--myGrey);
+    border-bottom: 1px solid rgb(220, 220, 220);
+    height: 105px;
+    position: fixed;
+    z-index: 100;
+}
+
+.headBannerOtherPages {
+    border-bottom: 1px solid rgb(222, 222, 222);
+} 
+
+#headBannerChoices, .headBannerChoicesOtherPages {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    top: calc(-20px + -1vw);
+    left: 2vw;
+}
+
+.headBannerChoiceToClick {
+    font-size: calc(20px + 1vw);
+}
+
+.headBannerChoiceToClick, .headBannerChoiceToClick:visited {
+    color: var(--themeColour);
+}
+
+.headBannerChoiceToClick:hover {
+    cursor: pointer;
+}
+
+#headBannerContent, .headBannerContentOtherPages {
+    position: relative;
+    top: -40px;
+    left: 25px;
+}
+
+/* .headBannerContentOtherPages {
+    position: relative;
+    top: -28px;
+    left: 25px;
+} */
+
+#iframeDiv {
+    background-color: green;
+    width: 100%;
+}
+
+#imagesDisplay {
+    width: 800px;
+    max-width: 100%;
+    height: 400px;
+    max-height: calc(50vw);
+}
+
+input {
+    font-size: 28px;
+    max-width: calc(100% - 16px);
+}
+
+#introInfoOverallDiv, .infoOverallDiv {
+    display:flex;
+    justify-content: space-evenly;
+    width: 100vw;
+}
+
+.introInfoBox, .infoBox {
+    min-height: 1px;
+    max-width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.introInfoText, .infoText {
+    font-size: 28px;
+}
+
+#introInfoTextBox {
+    width: 750px;
+    max-width: 95%;
+}
+
+.infoTextBox {
+    width: calc(100% + 18vh - 42vw) ;
+}
+
+
+#introInfoTextBox, .infoTextBox {
+    box-sizing: border-box;
+    /* background-color: white; */
+    background-color: rgb(254, 254, 254);
+    min-height: 325px;
+    position: relative;
+    top: -55px;
+    border: 1.6px solid grey; 
+    /* Was border 1px */
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 0.5%;
+}
+
+.infoTextBox {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.lightGreyBackground {
+    background-color: rgb(254, 254, 254);
+}
+
+#logoAtContact {
+    width: 100px;
+    height: 100px;
+    border: 10px solid var(--themeColour);
+    margin: 13px;
+}
+
+#logoAtTop, .logoAtTopOtherPages{
+    width: 5vw;
+    min-width: 45px;
+    height: 5vw;
+    min-height: 45px;
+    border: 0.5vw solid var(--themeColour);
+    z-index: 10;
+}
+
+#logoAtTop {
+    position: relative;
+    top: 33px;
+}
+
+.logoAtTopOtherPages{
+    cursor: pointer;
+    position: relative;
+    top: 28px;
+}
+
+#lowerPart {
+    position: relative;
+    top: -120px;
+}
+
+#ourServicesBanner {
+    background-color: green;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+#ourServicesBoxesDiv {
+    position: relative;
+    top: -120px;
+    max-width: 100%;
+}
+
+.ourServicesBoxesSubdiv {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    max-width: 100%;
+}
+
+#ourServicesTitle {
+    position: relative;
+    top: -180px;
+    left: 20px;
+    font-size: 42px;
+    text-shadow: -1.5px -1.5px 0 var(--lumiGreen), 1.5px -1.5px 0 var(--lumiGreen), -1.5px 1.5px 0 var(--lumiGreen), 1.5px 1.5px 0 var(--lumiGreen);
+}
+
+.photoWithinTextBox {
+    height: auto;
+    width: calc(100% - 44vw + 120px);
+    margin-top: 20px;
+    border-left: calc(22vw - 60px) solid green;
+    border-right: calc(22vw - 60px) solid green;
+    border-radius: 2%;
+}
+
+.redText {
+    color: var(--themeColour);
+}
+
+.serviceAnchor, .serviceAnchor:visited {
+    color: red !important;
+    font-size: 24px;
+    display: block;
+    overflow: auto;
+    position: relative;
+    left: -24px;
+    width: 130%;
+}
+
+.serviceBox {
+    border: 3px solid black;
+    height: 254px;
+    width: 348px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 60px;
+    background-color: var(--myGrey);
+    padding: 32px 64px 32px 32px;
+    box-sizing: border-box;
+    border-radius: 1.5%;
+}
+
+.serviceBoxNavPart {
+    font-size: 24px;
+    min-height: 65px;
+    display: flex;
+    align-items: center;
+    border-radius: 15%;
+    width: 100%;
+}
+
+.serviceBoxNavPart:hover {
+    background-color: rgb(222, 222, 222);
+    cursor: pointer;
+}
+.serviceBoxTopPart {
+    font-size: 34px;
+    height: 125px;
+}
+
+textarea {
+    font-size: 22px;
+    width: calc(100% - 16px);
+    min-height: 74px;
+}
+
+.titleSlightlyHigher {
+    position: relative;
+    top: calc(-5px - 0.4vw);
+}
+
+#videoElement {
+    height: 100%;
+    width: 100%;
+}
+
+#videoBanner {
+    background-color: green;
+    height: 500px;
+    position: relative;
+    top: -4px;
+}

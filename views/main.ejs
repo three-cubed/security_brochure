@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Firefly Fictional Security Corporation</title>
+</head>
+<body id='body'>
+    <div id='headBanner' class='banner'>
+        <div id='headBannerContent'>
+            <br>
+            <img id='logoAtTop' src="./public/company-logo.png" alt="Logo">
+            <div id='headBannerChoices'>
+                <!-- Using the scrollAndOffset() function, a higher positive number will place the target div lower on the screen. -->
+                <span class='headBannerChoiceToClick' onclick='scrollAndOffset("introInfoTextBox", 130)'>&emsp;&emsp;&emsp;About</span>
+                <span><a class='headBannerChoiceToClick' onclick='scrollAndOffset("#ourServicesDiv", -30)'>&emsp;&emsp;&emsp;Our services</a></span>
+                <span><a class='headBannerChoiceToClick' onclick='scrollAndOffset("#contactDiv", 150)'>&emsp;&emsp;&emsp;Contact us</a></span>
+                <span><a class='headBannerChoiceToClick' onclick='scrollAndOffset("#mapDiv", 100)'>&emsp;&emsp;&emsp;Find us</a></span>
+            </div>
+        </div>
+    </div>
+    <div id='belowHeadBanner'>
+        <div id='videoBanner' class='banner'>
+            <video id='videoElement' muted autoplay loop>
+                <source src='./public/camera-action-coverr-co.mp4' type='video/mp4' />
+            </video>
+        </div>
+        <div id='introInfoOverallDiv'>
+            <div class='introInfoBox'>
+                <div id='introInfoTextBox'>
+                    <h1>Firefly Fictional Security Corporation</h1>
+                    <div class='introInfoText'><em>Probably the best security company there could ever be!</em></div>
+                    <div class='introInfoText'>
+                        <p>Our mission at Firefly Fictional is simple: to provide our clients the best service there could ever be. Simply the best.</p>
+                        <p>We can provide each client what they need thanks to thorough analyses of the client's specific needs, meticulous planning, exceptional personnel, and extensive experience.</p>
+                        <p><em>Unlike our competitors</em>, we are able to harness the considerable advantages of an entirely fictional existence, making our service far more impressive than anything you will find in the real world.</p>
+                    </div>
+                </div>            
+            </div>
+        </div>
+        <div id='ourServicesDiv'>
+            <div id='ourServicesBanner' class='banner centredContent'>
+                <img name='slide' id='imagesDisplay' />
+            </div>
+            <span id='ourServicesTitle'>Our services</span>
+            <div id='ourServicesBoxesDiv'>
+                <div class='ourServicesBoxesSubdiv'>
+                    <div class='serviceBox'>
+                        <div class='serviceBoxTopPart'>
+                            Risk Management Consultancy
+                        </div>
+                        <a class='serviceAnchor' href='/views/security-risk-management.html'><div class='serviceBoxNavPart'>&emsp;Learn more...</div></a>
+                    </div>
+                    <div class='serviceBox'>
+                        <div class='serviceBoxTopPart'>
+                            Executive Protection Services
+                        </div>
+                        <a class='serviceAnchor' href='/executive-protection-services'><div class='serviceBoxNavPart'>&emsp;Learn more...</div></a>
+                    </div>
+                    <div class='serviceBox'>
+                        <div class='serviceBoxTopPart'>
+                            Security Training Courses
+                        </div>
+                        <a class='serviceAnchor' href='/views/security-training-courses.html'><div class='serviceBoxNavPart'>&emsp;Learn more...</div></a>
+                    </div>
+                </div>
+                <div class='ourServicesBoxesSubdiv'>
+                    <div class='serviceBox'>
+                        <div class='serviceBoxTopPart'>
+                            Technical Surveillance
+                        </div>
+                        <a class='serviceAnchor' href='/views/technical-surveillance.html'><div class='serviceBoxNavPart'>&emsp;Learn more...</div></a>
+                    </div>
+                    <div class='serviceBox'>
+                        <div class='serviceBoxTopPart'>
+                            Manpower Supply & Management
+                        </div>
+                        <a class='serviceAnchor' href='/views/manpower-supply-management.html'><div class='serviceBoxNavPart'>&emsp;Learn more...</div></a>
+                    </div>
+                    <div class='serviceBox'>
+                        <div class='serviceBoxTopPart'>
+                            Private Investigations
+                        </div>
+                        <a class='serviceAnchor' href='/views/private-investigations.html'><div class='serviceBoxNavPart'>&emsp;Learn more...</div></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id='lowerPart'>
+            <div id='contactDiv'>
+                <div class='centredContent'>
+                    <img id='logoAtContact' src='./public/company-logo.png' alt='Logo'>
+                </div>
+                <br>
+                <div id='contactTextDiv' class='centredContent'>
+                    Firefly Fictional Security Corporation,<br>
+                    123 Fakefact Road,<br>
+                    Londontown,<br>
+                    LT1 2AB,<br>
+                    United Kingdom.<br>
+                    <br>
+                    Tel. 01234 543210, Mon-Sat 8am-8pm<br>
+                    <br>
+                    Email: enquiries-and-information@firefly-fictional.org
+                </div>
+                <br>
+                <div id='contactBtnDiv' class='centredContent'>
+                    <button id='contactBtn' type='button' onclick="window.location.href='/contact-form'">Contact us now!</button>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div id='mapDiv'>
+                <br>
+                <div id='iframeDiv' class='centredContent'>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.7835575361864!2d-0.12698878462906957!3d51.4988392796337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604c38c8cd1d9%3A0xbc8eaa5de892b081!2sHouse%20of%20Lords!5e0!3m2!1sen!2suk!4v1630420266492!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <br>
+            <div class='footDiv centredText'>
+                © 2021 Firefly Fictional Security Corporation, Company Registration No: 0987654321XYZ.
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/main.js"></script>
+</body>
+</html>
