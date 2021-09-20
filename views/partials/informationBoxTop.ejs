@@ -1,12 +1,8 @@
-<% const divId = divTitle.replace(/\W/g, '')+'Div' %>
+<% let divId = divTitle.replace(/\W/g, '')+'Div' %>
+<% divId = divId.charAt(0).toLowerCase() + divId.slice(1) %>
 <div id=<%= divId %> class='infoOverallDiv'>
     <div class='infoBox'>
         <div class='infoTextBox'>
-            <img src="../images/bodyguards-erdogan.jpeg" alt="photo" class='photoWithinTextBox'>
+            <img src=<%= divImage %> alt="photo" class='photoWithinTextBox'>
             <h1><%= divTitle %></h1>
-            <div class='infoText'>
-                <em>
-                    <%= contentInitial %>
-                </em>
-            </div>
             <div class='infoText'>
