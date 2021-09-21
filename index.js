@@ -4,6 +4,7 @@ app.use(express.static(__dirname)); // To access stylesheet.css
 app.set('view engine', 'ejs');
 
 const router = require('./routes/routes');
+const toBuyRouter = require('./routes/toBuyRoutes');
 
 app.use('/', router);
 

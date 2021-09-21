@@ -6,21 +6,21 @@ function scrollAndOffset(place, pixels) {
     window.scrollTo(window.scrollX, window.scrollY - pixels);
 }
 
-let images = [];
-const time = 4200;	// Time for each image to show.
-let i = 0; 
-     
 // Simply add any new image here with an index number. No other changes required.
+let images = [];
 images[0] = './images/london-security-landscape.jpeg';
 images[1] = './images/cyber-padlocks.jpeg';
 images[2] = './images/countryside-car-security.jpeg';
 images[3] = './images/security-cyber-silhouettes.jpeg';
 images[4] = './images/masked-office-man.jpeg';
 
+const time = 4200;	// Time for each image to show.
+let i = 0;
+
 function runImageSlideshow(){
 	document.slide.src = images[i];
 	if(i < images.length - 1){
-	  i++; 
+		i++;
 	} else { 
 		i = 0;
 	}
@@ -39,4 +39,5 @@ window.onload = () => {
 	detectMobileOrNarrow();
 	runImageSlideshow();
 };
+
 window.onresize = detectMobileOrNarrow();

@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Executive Protection Services</title>
     <link rel="stylesheet" href="../styles/main.css">
+    <script src="/javascripts/otherPages.js" async></script>
 </head>
 <body>
 
+    <% const titleArray = ['Executive Protection Services', 'Close Protection', 'Event Security', 'Protective Surveillance']; %>
+    <!-- titleArray consists of the page title followed by the divisional titles in order. -->
+
     <%- include('./partials/headBannerTop.ejs') %>
-        <%- include('./partials/headBannerChoice.ejs', {divTitle: 'Close Protection'}) %>
-        <%- include('./partials/headBannerChoice.ejs', {divTitle: 'Event Security'}) %>
-        <%- include('./partials/headBannerChoice.ejs', {divTitle: 'Protective Surveillance'}) %>
+        <%- include('./partials/headBannerChoice.ejs', {divTitle: titleArray[1]}) %>
+        <%- include('./partials/headBannerChoice.ejs', {divTitle: titleArray[2]}) %>
+        <%- include('./partials/headBannerChoice.ejs', {divTitle: titleArray[3]}) %>
     <%- include('./partials/headBannerBottom.ejs') %>
 
     <div class='belowHeadBannerOtherPages'>
 
-        <%- include('./partials/pageTitle.ejs', {pageTitle: 'Executive Protection Services'}) %>
+        <%- include('./partials/pageTitle.ejs', {pageTitle: titleArray[0]}) %>
         
         <%- include('./partials/introPartialTop.ejs') %>
             <em>
@@ -39,7 +43,7 @@
             </p>
         <%- include('./partials/introPartialBottom.ejs') %>
 
-        <%- include('./partials/informationBoxTop.ejs', {divTitle:'Close Protection', divImage: '../images/bodyguards-erdogan.jpeg'}) %>
+        <%- include('./partials/informationBoxTop.ejs', {divTitle: titleArray[1], divImage: '../images/bodyguards-erdogan.jpeg'}) %>
             <em>
                 Have our best men by your side, whenever you need.
             </em>
@@ -63,7 +67,7 @@
             </p>
         <%- include('./partials/informationBoxBottom.ejs') %>
   
-        <%- include('./partials/informationBoxTop.ejs', {divTitle:'Event Security', divImage: '../images/event-security.jpeg'}) %>
+        <%- include('./partials/informationBoxTop.ejs', {divTitle: titleArray[2], divImage: '../images/event-security.jpeg'}) %>
             <em>
                 Feel secure at your gatherings, with a team of our expert personnel.
             </em>
@@ -81,7 +85,7 @@
             </p>
         <%- include('./partials/informationBoxBottom.ejs') %>
 
-        <%- include('./partials/informationBoxTop.ejs', {divTitle:'Protective Surveillance', divImage: '../images/photographer-sun-behind.jpeg'}) %>
+        <%- include('./partials/informationBoxTop.ejs', {divTitle: titleArray[3], divImage: '../images/photographer-sun-behind.jpeg'}) %>
             <em>
                 For those seeking a less obtrusive way to protect themselves and others.
             </em>
@@ -99,7 +103,7 @@
 
     </div>
 
-    <script src="/javascripts/otherPages.js"></script>
+    <!-- <script src="/javascripts/otherPages.js"></script> -->
 
 </body>
 

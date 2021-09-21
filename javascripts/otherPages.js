@@ -1,3 +1,21 @@
+if (document.readyState == 'loading') {
+	document.addEventListener('DOMContentLoaded', addEventListeners)
+} else {
+	addEventListeners();
+}
+
+function addEventListeners() {
+    document.getElementsByClassName('logoAtTopOtherPages')[0].addEventListener('click', goHome);
+
+    const btnsToBuyPage = document.getElementsByClassName('btnToBuyPage');
+    for (let btn of btnsToBuyPage) {
+        btn.innerText = 'Engage our services!';
+        btn.addEventListener('click', () => {
+            window.location.href='/toBuy/buy-services.html';
+        });
+    }
+}
+
 function scrollAndOffset(place, pixels) {
     let headPoint = document.getElementsByClassName('headBannerOtherPages')[0]
     location.hash = `${headPoint}`;
@@ -7,20 +25,6 @@ function scrollAndOffset(place, pixels) {
     window.scrollTo(window.scrollX, window.scrollY - pixels);
 }
 
-document.getElementsByClassName('logoAtTopOtherPages')[0].addEventListener('click', goHome);
-
 function goHome() {
     window.location.href = "../"
 }
-
-const btnsToBuyPage = document.getElementsByClassName('btnToBuyPage');
-
-// console.log(btnsToBuyPage);
-
-for (let btn of btnsToBuyPage) {
-    btn.innerText = 'Engage our services!';
-    btn.addEventListener('click', () => {
-        window.location.href='/views/buy-services.html';
-    });
-}
-

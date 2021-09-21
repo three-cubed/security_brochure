@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
     <title>Firefly Fictional Security Corporation</title>
+    <script src="/javascripts/main.js" async></script>
 </head>
 <body id='body'>
     <div id='headBanner' class='banner'>
@@ -118,10 +119,10 @@
             </div>
             <br>
             <div class='footDiv centredText'>
-                © 2021 Firefly Fictional Security Corporation, Company Registration No: 0987654321XYZ.
+                <%- include('./partials/copyright.txt') %>
             </div>
         </div>
     </div>
-    <script src="/javascripts/main.js"></script>
+    <!-- <script src="/javascripts/main.js"></script> -->
 </body>
 </html>

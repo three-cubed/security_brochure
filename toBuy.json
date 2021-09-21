@@ -1,0 +1,56 @@
+{
+    "riskManagement": [
+        {
+            "id": 111,
+            "name": "Risk Management Type One",
+            "price": 1200,
+            "imgName": "genericImage.png"
+        },
+        {
+            "id": 222,
+            "name": "Risk Management Type Two",
+            "price": 1400,
+            "imgName": "genericImage.png"
+        }
+    ],
+    "executiveProtectionServices": [
+        {
+            "id": 333,
+            "name": "Close Protection",
+            "price": 1000,
+            "imgName": "genericImage.png"
+        },
+        {
+            "id": 444,
+            "name": "Event Security",
+            "price": 1000,
+            "imgName": "genericImage.png"
+        },
+        {
+            "id": 555,
+            "name": "Protective Surveillance",
+            "price": 2000,
+            "imgName": "genericImage.png"
+        }
+    ],
+    "securityTrainingCourses": [
+        {
+            "id": 666,
+            "name": "Training type pne",
+            "price": 1999,
+            "imgName": "genericImage.png"
+        },
+        {
+            "id": 777,
+            "name": "Training type two",
+            "price": 1999,
+            "imgName": "genericImage.png"
+        },
+        {
+          "id": 888,
+          "name": "Training type three",
+          "price": 699,
+          "imgName": "genericImage.png"
+        }
+    ]
+}
