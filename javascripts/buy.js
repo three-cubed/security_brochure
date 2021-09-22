@@ -1,7 +1,7 @@
 const removeBtnText = 'Remove from basket';
 
 if (document.readyState == 'loading') {
-	document.addEventListener('DOMContentLoaded', addEventListeners)
+	document.addEventListener('DOMContentLoaded', addPrices)
 } else {
 	addPrices();
 }
