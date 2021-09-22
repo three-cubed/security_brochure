@@ -3,9 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="../javascripts/buy.js" async></script>
     <title>Buy Services</title>
 </head>
 <body>
-    Buy Services EJS
+    <h1 class='redText'>Buy Services</h1>
+
+    <% let productArray = []%>
+    <!-- remove productArray lines if not used. -->
+    <% for (const [key, products] of Object.entries(items)) { %>
+        <% let divProductType = JSON.stringify(key).replace(/\W/g, '')+'Div' %>
+        <% divProductType = divProductType.charAt(0).toLowerCase() + divProductType.slice(1) %>
+        <div data-div-product-type='<%= divProductType %>'>
+            <h2>&ensp;<%= JSON.stringify(key).replace(/\"/g, "") %></h2>
+            <% products.forEach(product => { %>
+                <p class='infoTextBuyPage' 
+                    data-product-id='<%= product.id %>' 
+                    data-product-name='<%= product.name %>' 
+                    data-product-price='<%= product.price %>'
+                    >
+                    &emsp;<img src='../images/<%=product.imgName %>' class='toBuyImage' />
+                    &ensp;<%= product.name %>
+                    &emsp;£&ensp;<%= product.price.toLocaleString() %>
+                    &emsp;<button type='button' class='addToBasketBtn' onclick='addToBasket(event)'>Add to basket</button></button>
+                </p>
+                <% productArray.push(product) %>
+            <% }) %>
+        </div>
+    <% } %>
+
+    <section>
+        <h2 class="section-header">Basket</h2>
+        <div class="basket-individual-product">
+            <span class="basket-header basket-column">ITEM</span>
+            <span class="basket-header basket-column">QUANTITY</span>
+            <span class="basket-header basket-column">PRICE</span>
+            <span class="basket-header basket-column">SUB-TOTAL</span>
+            <span class="basket-header basket-column"></span>
+        </div>
+        <div class="basket-items-div infoTextBuyPage">
+            <!-- This will be filled by DOM manipulation as items are cliked upon for purchase. -->
+        </div>
+        <div class="basket-total">
+            <span class="basket-total-title">Total:&emsp;</span>
+            <span class="basket-total-price">£ 0</span>
+        </div>
+        <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+    </section>
+    <br><br><br>
 </body>
 </html>

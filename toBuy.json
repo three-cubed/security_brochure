@@ -1,5 +1,5 @@
 {
-    "riskManagement": [
+    "Risk Management": [
         {
             "id": 111,
             "name": "Risk Management Type One",
@@ -13,7 +13,7 @@
             "imgName": "genericImage.png"
         }
     ],
-    "executiveProtectionServices": [
+    "Executive Protection Services": [
         {
             "id": 333,
             "name": "Close Protection",
@@ -33,10 +33,10 @@
             "imgName": "genericImage.png"
         }
     ],
-    "securityTrainingCourses": [
+    "Security Training Courses": [
         {
             "id": 666,
-            "name": "Training type pne",
+            "name": "Training type one",
             "price": 1999,
             "imgName": "genericImage.png"
         },
@@ -47,10 +47,10 @@
             "imgName": "genericImage.png"
         },
         {
-          "id": 888,
-          "name": "Training type three",
-          "price": 699,
-          "imgName": "genericImage.png"
+            "id": 888,
+            "name": "Training type three",
+            "price": 699,
+            "imgName": "genericImage.png"
         }
     ]
 }
