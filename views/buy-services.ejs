@@ -25,7 +25,7 @@
                     >
                     &emsp;<img src='../images/<%=product.imgName %>' class='toBuyImage' />
                     &ensp;<%= product.name %>
-                    &emsp;£&ensp;<%= product.price.toLocaleString() %>
+                    <span class='productPriceSpan'></span>
                     &emsp;<button type='button' class='addToBasketBtn' onclick='addToBasket(event)'>Add to basket</button></button>
                 </p>
                 <% productArray.push(product) %>
@@ -34,7 +34,7 @@
     <% } %>
 
     <section>
-        <h2 class="section-header">Basket</h2>
+        <h2 class="section-header">&ensp;Basket</h2>
         <div class="basket-individual-product">
             <span class="basket-header basket-column">ITEM</span>
             <span class="basket-header basket-column">QUANTITY</span>

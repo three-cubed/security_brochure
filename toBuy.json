@@ -49,7 +49,7 @@
         {
             "id": 888,
             "name": "Training type three",
-            "price": 699,
+            "price": 699.90,
             "imgName": "genericImage.png"
         }
     ]

@@ -1,4 +1,17 @@
-const removeBtnText = 'Remove from basket'
+const removeBtnText = 'Remove from basket';
+
+if (document.readyState == 'loading') {
+	document.addEventListener('DOMContentLoaded', addEventListeners)
+} else {
+	addPrices();
+}
+
+function addPrices() {
+    let productPriceSpans = document.getElementsByClassName('productPriceSpan');
+    for (var i = 0; i < productPriceSpans.length; i++) {
+        productPriceSpans[i].innerHTML = `&emsp;£&thinsp;${formatNumberToString(productPriceSpans[i].parentElement.dataset.productPrice)}`;
+    }
+}
 
 function addToBasket(event) {
     // title, price, imageSrc, id
@@ -15,7 +28,7 @@ function addToBasket(event) {
     let basketItems = basketItemsDiv.getElementsByClassName('basket-individual-product');
     for (var i = 0; i < basketItems.length; i++) {
         if (basketItems[i].dataset.productId == event.target.parentElement.dataset.productId) {
-            alert('This product has already been put in the basket!');
+            alert('This product has already been put in the basket! If you want more, increase the stated quantity.');
             return;
         }
     }
@@ -27,7 +40,7 @@ function addToBasket(event) {
         <div class="basket-quantity basket-column">
             <input class="basket-quantity-input" type="number" value="1">
         </div>
-        <span class="basket-price basket-column">@ £ ${parseFloat(event.target.parentElement.dataset.productPrice).toLocaleString()}</span>
+        <span class="basket-price basket-column">@ £ ${formatNumberToString(parseFloat(event.target.parentElement.dataset.productPrice))}</span>
         <span class="total-this-product basket-column"></span>
         <button class="btn btn-danger" type="button">${removeBtnText}</button>`
     basketRow.innerHTML = basketRowContents;
@@ -60,9 +73,23 @@ function updateTotals() {
         let basketRow = basketRows[i];
         let quantity = basketRow.getElementsByClassName('basket-quantity-input')[0].value;
         let totalThisProduct = basketRow.dataset.productPrice * quantity;
-        basketRow.getElementsByClassName('total-this-product')[0].innerText = ` = £ ${totalThisProduct.toLocaleString()}`;
+        basketRow.getElementsByClassName('total-this-product')[0].innerText = ` = £ ${formatNumberToString(totalThisProduct)}`;
         total = total + (basketRow.dataset.productPrice * quantity);
     }
-    total = Math.round(total * 100) / 100
-    document.getElementsByClassName('basket-total-price')[0].innerText = `£ ${total.toLocaleString()}`;
+    total = Math.round(total * 100) / 100;
+    let totalString = formatNumberToString(total);
+    document.getElementsByClassName('basket-total-price')[0].innerText = `£ ${totalString}`;
+}
+
+function formatNumberToString(number) {
+    if (!isNaN(number)) number = parseFloat(number);
+    if (!Number.isInteger(number)) {
+        numberString = number.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        })
+     } else {
+        numberString = number.toLocaleString();
+     }
+     return numberString;
 }
