@@ -31,11 +31,6 @@ a, a:visited {
     border-radius: 3%;
 }
 
-body {
-    margin: 0px;
-    width: 100vw;
-}
-
 .banner {
     width: 100vw;
 }
@@ -47,6 +42,10 @@ body {
     top: 100px;
 }
 
+body {
+    margin: 0px;
+    width: 100vw;
+}
 .boldText {
     font-weight: bold;
 }
@@ -54,6 +53,19 @@ body {
 /* .borderBox {
     box-sizing: border-box;
 } */
+
+.btn-purchase {
+    font-size: 28px;
+    background-color: var(--buttonGreen);
+    width: 100%;
+    border-radius: 10%;
+}
+
+.btn-purchase-container {
+    border: 1px solid red;
+    margin: 20px auto;
+    width: 250px;
+}
 
 .btnToBuyPage {
     background-color: var(--buttonGreen);
@@ -66,7 +78,7 @@ body {
     margin-bottom: 20px;
 }
 
-.btnToBuyPage:hover {
+.btnToBuyPage:hover, .btn-purchase:hover {
     background-color: green;
     cursor: pointer;
 }
