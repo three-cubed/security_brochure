@@ -9,8 +9,10 @@
 </head>
 <body>
 
-    <% const titleArray = ['Executive Protection Services', 'Close Protection', 'Event Security', 'Protective Surveillance']; %>
-    <!-- titleArray consists of the page title followed by the divisional titles in order. -->
+    <% const titleArray = 
+        <!-- titleArray consists of the page title followed by the divisional titles in order. -->
+        ['Executive Protection Services', 'Close Protection', 'Event Security', 'Protective Surveillance']; 
+    %>
 
     <%- include('./partials/headBannerTop.ejs') %>
         <%- include('./partials/headBannerChoice.ejs', {divTitle: titleArray[1]}) %>

@@ -11,7 +11,7 @@ function addEventListeners() {
     for (let btn of btnsToBuyPage) {
         btn.innerText = 'Engage our services!';
         btn.addEventListener('click', () => {
-            window.location.href='/toBuy/buy-services';
+            window.location.href='/toBuy/buy';
         });
     }
 }

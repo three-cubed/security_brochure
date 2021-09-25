@@ -1,3 +1,5 @@
+<% const conceptsOnOffer = 'Our Services' %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +17,7 @@
             <div id='headBannerChoices'>
                 <!-- Using the scrollAndOffset() function, a higher positive number will place the target div lower on the screen. -->
                 <span class='headBannerChoiceToClick' onclick='scrollAndOffset("introInfoTextBox", 130)'>&emsp;&emsp;&emsp;About</span>
-                <span><a class='headBannerChoiceToClick' onclick='scrollAndOffset("#ourServicesDiv", -30)'>&emsp;&emsp;&emsp;Our services</a></span>
+                <span><a class='headBannerChoiceToClick' onclick='scrollAndOffset("#offersDiv", -30)'>&emsp;&emsp;&emsp;<%= conceptsOnOffer %></a></span>
                 <span><a class='headBannerChoiceToClick' onclick='scrollAndOffset("#contactDiv", 150)'>&emsp;&emsp;&emsp;Contact us</a></span>
                 <span><a class='headBannerChoiceToClick' onclick='scrollAndOffset("#mapDiv", 100)'>&emsp;&emsp;&emsp;Find us</a></span>
             </div>
@@ -40,51 +42,48 @@
                 </div>            
             </div>
         </div>
-        <div id='ourServicesDiv'>
-            <div id='ourServicesBanner' class='banner centredContent'>
+        <div id='offersDiv'>
+            <div id='offersBanner' class='banner centredContent'>
                 <img name='slide' id='imagesDisplay' />
             </div>
-            <span id='ourServicesTitle'>Our services</span>
-            <div id='ourServicesBoxesDiv'>
-                <div class='ourServicesBoxesSubdiv'>
-                    <div class='serviceBox'>
-                        <div class='serviceBoxTopPart'>
-                            Risk Management Consultancy
-                        </div>
-                        <a class='serviceAnchor' href='/views/security-risk-management.html'><div class='serviceBoxNavPart'>&emsp;Learn more...</div></a>
-                    </div>
-                    <div class='serviceBox'>
-                        <div class='serviceBoxTopPart'>
-                            Executive Protection Services
-                        </div>
-                        <a class='serviceAnchor' href='/executive-protection-services'><div class='serviceBoxNavPart'>&emsp;Learn more...</div></a>
-                    </div>
-                    <div class='serviceBox'>
-                        <div class='serviceBoxTopPart'>
-                            Security Training Courses
-                        </div>
-                        <a class='serviceAnchor' href='/views/security-training-courses.html'><div class='serviceBoxNavPart'>&emsp;Learn more...</div></a>
-                    </div>
+            <span id='offersTitle'><%= conceptsOnOffer %></span>
+            <div id='offersBoxesDiv'>
+                <div class='offersBoxesSubdiv'>
+
+                    <%-
+                        include('./partials/mainPage/offerBox.ejs',
+                            {offerBoxTitle: 'Executive Protection Services' , offerLink: '/executive-protection-services'})
+                    %>
+
+                    <%-
+                        include('./partials/mainPage/offerBox.ejs',
+                            {offerBoxTitle: 'Risk Management Consultancy' , offerLink: '/views/security-risk-management.html'})
+                    %>
+
+                    <%-
+                        include('./partials/mainPage/offerBox.ejs',
+                            {offerBoxTitle: 'Security Training Courses' , offerLink: '/views/security-training-courses.html'})
+                    %>
+
                 </div>
-                <div class='ourServicesBoxesSubdiv'>
-                    <div class='serviceBox'>
-                        <div class='serviceBoxTopPart'>
-                            Technical Surveillance
-                        </div>
-                        <a class='serviceAnchor' href='/views/technical-surveillance.html'><div class='serviceBoxNavPart'>&emsp;Learn more...</div></a>
-                    </div>
-                    <div class='serviceBox'>
-                        <div class='serviceBoxTopPart'>
-                            Manpower Supply & Management
-                        </div>
-                        <a class='serviceAnchor' href='/views/manpower-supply-management.html'><div class='serviceBoxNavPart'>&emsp;Learn more...</div></a>
-                    </div>
-                    <div class='serviceBox'>
-                        <div class='serviceBoxTopPart'>
-                            Private Investigations
-                        </div>
-                        <a class='serviceAnchor' href='/views/private-investigations.html'><div class='serviceBoxNavPart'>&emsp;Learn more...</div></a>
-                    </div>
+
+                <div class='offersBoxesSubdiv'>
+
+                    <%-
+                        include('./partials/mainPage/offerBox.ejs',
+                            {offerBoxTitle: 'Technical Surveillance' , offerLink: '/views/technical-surveillance.html'})
+                    %>
+
+                    <%-
+                        include('./partials/mainPage/offerBox.ejs',
+                            {offerBoxTitle: 'Manpower Supply & Management' , offerLink: '/views/manpower-supply-management.html'})
+                    %>
+
+                    <%-
+                        include('./partials/mainPage/offerBox.ejs',
+                            {offerBoxTitle: 'Private Investigations' , offerLink: '/views/private-investigations.html'})
+                    %>
+
                 </div>
             </div>
         </div>

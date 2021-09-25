@@ -46,6 +46,7 @@ body {
     margin: 0px;
     width: 100vw;
 }
+
 .boldText {
     font-weight: bold;
 }
@@ -315,7 +316,7 @@ input {
     top: -120px;
 }
 
-#ourServicesBanner {
+#offersBanner {
     background-color: green;
     height: 400px;
     display: flex;
@@ -323,13 +324,13 @@ input {
     box-sizing: border-box;
 }
 
-#ourServicesBoxesDiv {
+#offersBoxesDiv {
     position: relative;
     top: -120px;
     max-width: 100%;
 }
 
-.ourServicesBoxesSubdiv {
+.offersBoxesSubdiv {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -337,7 +338,7 @@ input {
     max-width: 100%;
 }
 
-#ourServicesTitle {
+#offersTitle {
     position: relative;
     top: -180px;
     left: 20px;
@@ -354,11 +355,7 @@ input {
     border-radius: 2%;
 }
 
-.redText {
-    color: var(--themeColour);
-}
-
-.serviceAnchor, .serviceAnchor:visited {
+/* .offerAnchor, .offerAnchor:visited {
     color: red !important;
     font-size: 24px;
     display: block;
@@ -366,9 +363,19 @@ input {
     position: relative;
     left: -24px;
     width: 130%;
+} */
+
+.learnMore {
+    color: red !important;
+    font-size: 24px;
+    /* display: block;
+    overflow: auto; */
+    position: relative;
+    left: -24px;
+    width: 130%;
 }
 
-.serviceBox {
+.offerBox {
     border: 3px solid black;
     height: 254px;
     width: 348px;
@@ -381,7 +388,7 @@ input {
     border-radius: 1.5%;
 }
 
-.serviceBoxNavPart {
+.offerBoxNavPart {
     font-size: 24px;
     min-height: 65px;
     display: flex;
@@ -390,11 +397,11 @@ input {
     width: 100%;
 }
 
-.serviceBoxNavPart:hover {
+.offerBox:hover {
     background-color: rgb(222, 222, 222);
     cursor: pointer;
 }
-.serviceBoxTopPart {
+.offerBoxTopPart {
     font-size: 34px;
     height: 125px;
 }
