@@ -25,17 +25,25 @@ router.post('/purchase', function(req, res) {
             const toBuyJSON = JSON.parse(toBuyData);
             const backendDataArray = JSONtoArray(toBuyJSON);
             let totalToCharge = 0;
-            req.body.items.forEach(function(itemToBuy) {
+            let receiptInfo = [];
+            req.body.items.forEach(function(itemBeingBought) {
                 const matchingBackendData = backendDataArray.find(
                     function(backendDataItem) {
-                        return backendDataItem.id == itemToBuy.id
+                        return backendDataItem.id == itemBeingBought.id
                 })
-                totalToCharge += itemToBuy.quantity * matchingBackendData.price;
+                const subtotal = itemBeingBought.quantity * matchingBackendData.price;
+                totalToCharge += subtotal;
+                receiptInfo.push({'item': matchingBackendData.name, 'price per item': matchingBackendData.price,'quantity': itemBeingBought.quantity, 'sub-total': subtotal});
             })
-            console.log(`Final total to charge = ${totalToCharge}`);
+            receiptInfo.push(`total: ${totalToCharge}`)
+            console.log(`total = ${totalToCharge}`);
+            res.json({
+                message: `Successful fictional purchase processed by backend; total charge of ${totalToCharge}`,
+                receiptInfo: receiptInfo,
+                fictionalPurchaseToken: req.body.fictionalPurchaseToken
+            })
         }
     })
-    res.end();
 })
 
 function JSONtoArray(JSON) {

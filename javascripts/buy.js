@@ -133,12 +133,16 @@ function initiatePurchase() {
         })
     }).then(function(res) {
         return res.json();
-    }).then(function(data) {
-        // alert();
-        updatebasketTotal()
+    }).then(function(resJSON) {
+        alert(`Response from server: ${resJSON.message}; ${JSON.stringify(resJSON.receiptInfo)}`);
+        updatebasketTotal();
     }).catch(function(error) {
         console.error(error);
     })
+}
+
+function updatebasketTotal() {
+    console.log('updatebasketTotal() dummy function logging');
 }
 
 function generateUUID() { // generateUUID() Public Domain/MIT

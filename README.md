@@ -2,6 +2,10 @@
 
 This is a full-stack brochure web-site for a (fictional) company.
 
+## Purchasing
+
+Fictionally purchasing services of the company will result in an interaction with the backend, which will produce a response from the backend to be found in the browser development tools: Network > purchase > Response. For development information, much of the response will also be conveyed via a window alert.
+
 ## Attribution
 
 Unless otherwsie stated, images are in the public domain with a Public Domain Certification; for details see: https://creativecommons.org/licenses/publicdomain/.
