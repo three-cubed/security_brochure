@@ -1,3 +1,6 @@
 node_modules
+.env
 holding folder
 NOTES_TO_SELF.txt
+
+buy-COPY.ejs

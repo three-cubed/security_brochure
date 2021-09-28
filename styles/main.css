@@ -280,6 +280,10 @@ input {
     margin-bottom: 12px;
 }
 
+.item-quantity {
+    max-width: 85px;
+}
+
 .lightGreyBackground {
     background-color: rgb(254, 254, 254);
 }

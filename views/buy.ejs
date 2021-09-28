@@ -12,7 +12,7 @@
 
     <% let productArray = []%>
     <!-- remove productArray lines if not used. -->
-    <% for (const [key, products] of Object.entries(items)) { %>
+    <% for (const [key, products] of Object.entries(buyablesJSON)) { %>
         <% let divProductType = JSON.stringify(key).replace(/\W/g, '')+'Div' %>
         <% divProductType = divProductType.charAt(0).toLowerCase() + divProductType.slice(1) %>
         <div data-div-product-type='<%= divProductType %>'>

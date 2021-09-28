@@ -18,8 +18,8 @@ function addPrices() {
 }
 
 function addEventListener() {
-    console.log(document.getElementsByClassName('btn-purchase')[0]);
-    document.getElementsByClassName('btn-purchase')[0].addEventListener('click', initiatePurchase);
+    // console.log(document.getElementsByClassName('btn-purchase')[0]);
+    document.getElementsByClassName('btn-purchase')[0].addEventListener('click', executePurchase);
 }
 
 
@@ -38,7 +38,7 @@ function addToBasket(event) {
     let basketItems = basketItemsDiv.getElementsByClassName('basket-individual-product');
     for (var i = 0; i < basketItems.length; i++) {
         if (basketItems[i].dataset.productId == event.target.parentElement.dataset.productId) {
-            alert('This product has already been put in the basket! If you want more, increase the stated quantity.');
+            alert('This has already been put in the basket! If you want more, increase the stated quantity.');
             return;
         }
     }
@@ -57,6 +57,7 @@ function addToBasket(event) {
     basketItemsDiv.append(basketRow)
     basketRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeProductFromBasket);
     basketRow.getElementsByClassName('item-quantity-input')[0].addEventListener('change', checkValidQuantity);
+    basketRow.getElementsByClassName('item-quantity-input')[0].addEventListener('keyup', checkValidQuantity);
     updateTotals();
     window.scrollTo(0,document.body.scrollHeight);
 }
@@ -67,10 +68,17 @@ function removeProductFromBasket(event) {
 }
 
 function checkValidQuantity(event) {
-    var input = event.target
-    if (isNaN(input.value) || input.value < 1) {
-        alert(`You cannot order less than one! If you no longer want this product, simply click "${removeBtnText}".`);
-        input.value = 1;
+    console.log(typeof event.target.value)
+    if (isNaN(event.target.value)) {
+        // Actually should not be possible for this input as type="number" but included for thoroughness.
+        // Note nonetheless that paradoxically console.log(typeof event.target.value) will return 'string'.
+        alert(`Error: Ensure you use a valid numerical quantity! If you no longer want this, simply click "${removeBtnText}".`);
+    } else if (event.target.value < 1) {
+        alert(`You cannot order less than one! If you no longer want this, simply click "${removeBtnText}".`);
+        event.target.value = 1;
+    } else if (!Number.isInteger(parseFloat(event.target.value))) {
+        alert('Your order quantity must be a whole number');
+        event.target.value = Math.floor(event.target.value);
     }
     updateTotals();
 }
@@ -78,7 +86,7 @@ function checkValidQuantity(event) {
 function updateTotals() {
     var basketItemsDiv = document.getElementsByClassName('basket-items-div')[0]
     var basketRows = basketItemsDiv.getElementsByClassName('basket-row')
-    var total = 0
+    let total = 0
     for (let i = 0; i < basketRows.length; i++) {
         let basketRow = basketRows[i];
         let quantity = basketRow.getElementsByClassName('item-quantity-input')[0].value;
@@ -92,7 +100,10 @@ function updateTotals() {
 }
 
 function formatNumberToString(number) {
-    if (!isNaN(number)) number = parseFloat(number);
+    // parseFloat(number) is because the prices are actually coming into the function as strings! To check, use:
+    // console.log(typeof number)
+    // Note that numbers are nonetheless coming through from event.target... as numbers.
+    number = parseFloat(number);
     if (!Number.isInteger(number)) {
         numberString = number.toLocaleString(undefined, {
             minimumFractionDigits: 2,
@@ -104,15 +115,33 @@ function formatNumberToString(number) {
      return numberString;
 }
 
-function initiatePurchase() {
+// function initiatePurchase() {
+//     fetch('/toBuy/purchase', {
+//         method: 'GET',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Accept': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             fictionalPurchaseToken: fictionalPurchaseToken,
+//             items: items
+//         })
+//     }).then(function(res) {
+//         return res.json();
+//     }).catch(function(error) {
+//         console.error(error);
+//     })
+// }
+
+function executePurchase() {
     const fictionalPurchaseToken = generateUUID();
     console.log(`Initiating fictional purchase with token ${fictionalPurchaseToken}`);
 
     var items = []
     var basketRows = document.getElementsByClassName('basket-items-div')[0].getElementsByClassName('basket-row')
     while (basketRows.length > 0) {
-        var quantity = basketRows[0].getElementsByClassName('item-quantity-input')[0].value;
-        var id = basketRows[0].dataset.productId
+        const quantity = basketRows[0].getElementsByClassName('item-quantity-input')[0].value;
+        const id = basketRows[0].dataset.productId
         items.push({
             id: id,
             quantity: quantity
@@ -135,22 +164,18 @@ function initiatePurchase() {
         return res.json();
     }).then(function(resJSON) {
         alert(`Response from server: ${resJSON.message}; ${JSON.stringify(resJSON.receiptInfo)}`);
-        updatebasketTotal();
+        updateTotals();
     }).catch(function(error) {
         console.error(error);
     })
 }
 
-function updatebasketTotal() {
-    console.log('updatebasketTotal() dummy function logging');
-}
-
-function generateUUID() { // generateUUID() Public Domain/MIT
-    var d = new Date().getTime(); //Timestamp
+function generateUUID() { // generateUUID() is copied for processing simulation purposes; this function has a Public Domain/MIT license.
+    var d = new Date().getTime(); // Timestamp
     var d2 = ((typeof performance !== 'undefined') && performance.now && (performance.now()*1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random() * 16; //random number between 0 and 16
-        if(d > 0){ //Use timestamp until depleted
+        var r = Math.random() * 16; // random number between 0 and 16
+        if(d > 0){ // Use timestamp until depleted
             r = (d + r)%16 | 0;
             d = Math.floor(d/16);
         } else { // Use microseconds since page-load if supported

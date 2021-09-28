@@ -11,6 +11,6 @@ const toBuyRouter = require('./routes/toBuyRoutes');
 app.use('/', router);
 app.use('/toBuy', toBuyRouter);
 
-app.listen(process.env.port||3000, () => {
-    console.log('listening to 3000');
+app.listen(process.env.port||3200, () => {
+    console.log('listening to 3200');
 });
