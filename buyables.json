@@ -2,14 +2,16 @@
     "Risk Management": [
         {
             "id": 111,
-            "name": "Risk Management Type One",
+            "name": "Security consultancy review",
+            "unitSoldBy": "per consultant per week",
             "price": 1200,
             "imgName": "genericImage.png"
         },
         {
             "id": 222,
-            "name": "Risk Management Type Two",
-            "price": 1400,
+            "name": "Deep strategic security consultancy & planning",
+            "unitSoldBy": "per consultant per week",
+            "price": 1440,
             "imgName": "genericImage.png"
         }
     ],
@@ -17,39 +19,62 @@
         {
             "id": 333,
             "name": "Close Protection",
-            "price": 1000,
+            "unitSoldBy": "per man per hour",
+            "price": 48,
             "imgName": "genericImage.png"
         },
         {
             "id": 444,
             "name": "Event Security",
-            "price": 1000,
+            "unitSoldBy": "per man per hour",
+            "price": 35,
             "imgName": "genericImage.png"
         },
         {
             "id": 555,
             "name": "Protective Surveillance",
-            "price": 2424,
+            "unitSoldBy": "per team per day",
+            "price": 824,
             "imgName": "genericImage.png"
         }
     ],
     "Security Training Courses": [
         {
+            "note": "All other courses require our Basic Security Training or equivalent prior training. Contact us if in doubt."
+        },
+        {
             "id": 666,
-            "name": "Training type one",
-            "price": 1999,
+            "name": "Basic Security Training",
+            "unitSoldBy": "one day",
+            "price": 240,
             "imgName": "genericImage.png"
         },
         {
             "id": 777,
-            "name": "Training type two",
-            "price": 1999,
+            "name": "Event Security Training",
+            "unitSoldBy": "two days",
+            "price": 480,
             "imgName": "genericImage.png"
         },
         {
             "id": 888,
-            "name": "Training type three",
-            "price": 699.90,
+            "name": "Event Security Refresher Training",
+            "unitSoldBy": "four hours",
+            "price": 100,
+            "imgName": "genericImage.png"
+        },
+        {
+            "id": 999,
+            "name": "Close Protection Training",
+            "unitSoldBy": "ten days",
+            "price": 2699,
+            "imgName": "genericImage.png"
+        },
+        {
+            "id": 1111,
+            "name": "Close Protection Refresher Training",
+            "unitSoldBy": "two days",
+            "price": 312,
             "imgName": "genericImage.png"
         }
     ]

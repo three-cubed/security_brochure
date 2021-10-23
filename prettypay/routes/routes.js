@@ -82,7 +82,7 @@ router.post('/process', async function(req, res) {
     }
 
     const matchAttempt = await matchPreprocessingData(uniqueTransactionReference, currency, amountToProcess);
-    console.log(`matchAttempt: ${matchAttempt}`);
+    // console.log(`matchAttempt: ${matchAttempt}`);
 
     if (matchAttempt === 'discrepancy') {
         const discrepancyMessage = 'There appears to be a discrepancy between amount & currency data received at preprocessing and corresponding data received at processing. You may wish to try again.'

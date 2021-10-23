@@ -12,6 +12,13 @@ a, a:visited {
     text-decoration: none !important;
 }
 
+.addToBasketBtn {
+    background-color: var(--buttonGreen);
+    border-radius: 10%;
+    font-size: 16px;
+    color: white;
+}
+
 .basket-individual-product {
     display:flex;
     min-width: 90vw;
@@ -192,7 +199,7 @@ body {
     color: var(--themeColour);
 }
 
-.headBannerChoiceToClick:hover {
+.headBannerChoiceToClick:hover, .groupTitleSpan:hover {
     cursor: pointer;
 }
 
@@ -247,8 +254,10 @@ input {
     font-size: 28px;
 }
 
-.infoTextBuyPage {
+.infoTextOnBuyPage {
     font-size: 24px;
+    margin-top: 18px;
+    margin-bottom: 18px;
 }
 
 #introInfoTextBox {
@@ -259,7 +268,6 @@ input {
 .infoTextBox {
     width: calc(100% + 18vh - 42vw) ;
 }
-
 
 #introInfoTextBox, .infoTextBox {
     box-sizing: border-box;
@@ -280,8 +288,28 @@ input {
     margin-bottom: 12px;
 }
 
+.invisible {
+    transform: scale(0);
+    height: 0px;
+}
+
+/* .visible {
+    transform: scale(1);
+    height: auto;
+} */
+
 .item-quantity {
     max-width: 85px;
+}
+
+.learnMore {
+    color: red !important;
+    font-size: 24px;
+    /* display: block;
+    overflow: auto; */
+    position: relative;
+    left: -24px;
+    width: 130%;
 }
 
 .lightGreyBackground {
@@ -350,35 +378,6 @@ input {
     text-shadow: -1.5px -1.5px 0 var(--lumiGreen), 1.5px -1.5px 0 var(--lumiGreen), -1.5px 1.5px 0 var(--lumiGreen), 1.5px 1.5px 0 var(--lumiGreen);
 }
 
-.photoWithinTextBox {
-    height: auto;
-    width: calc(100% - 44vw + 120px);
-    margin-top: 20px;
-    border-left: calc(22vw - 60px) solid green;
-    border-right: calc(22vw - 60px) solid green;
-    border-radius: 2%;
-}
-
-/* .offerAnchor, .offerAnchor:visited {
-    color: red !important;
-    font-size: 24px;
-    display: block;
-    overflow: auto;
-    position: relative;
-    left: -24px;
-    width: 130%;
-} */
-
-.learnMore {
-    color: red !important;
-    font-size: 24px;
-    /* display: block;
-    overflow: auto; */
-    position: relative;
-    left: -24px;
-    width: 130%;
-}
-
 .offerBox {
     border: 3px solid black;
     height: 254px;
@@ -408,6 +407,33 @@ input {
 .offerBoxTopPart {
     font-size: 34px;
     height: 125px;
+}
+
+.photoWithinTextBox {
+    height: auto;
+    width: calc(100% - 44vw + 120px);
+    margin-top: 20px;
+    border-left: calc(22vw - 60px) solid green;
+    border-right: calc(22vw - 60px) solid green;
+    border-radius: 2%;
+}
+
+.productPriceNote {
+    min-width: 50%;
+    margin-left: auto;
+}
+
+.productsDivOuter {
+    display: flex;
+    justify-content: center;
+    background-color: var(--themeColour);
+}
+
+.productsDivInner {
+    background-color: white;
+    display: inline-block;
+    padding-left: 3vw;
+    padding-right: 3vw;
 }
 
 textarea {

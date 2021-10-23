@@ -15,13 +15,17 @@ const removeBtnText = 'Remove from basket';
 function addPrices() {
     let productPriceSpans = document.getElementsByClassName('productPriceSpan');
     for (var i = 0; i < productPriceSpans.length; i++) {
-        productPriceSpans[i].innerHTML = `&emsp;£&thinsp;${formatNumberToString(productPriceSpans[i].parentElement.dataset.productPrice)}`;
+        productPriceSpans[i].innerHTML = `£&thinsp;${formatNumberToString(productPriceSpans[i].dataset.productPrice)}`;
     }
 }
 
 function addEventListener() {
     // console.log(document.getElementsByClassName('btn-purchase')[0]);
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', executePurchase);
+    let groupTitleSpans = document.getElementsByClassName('groupTitleSpan');
+    for(i = 0; i < groupTitleSpans.length; i++) {
+        groupTitleSpans[i].addEventListener('click', changeDivVisibility);
+    };
 }
 
 
@@ -29,7 +33,7 @@ function addToBasket(event) {
     // title, price, imageSrc, id
     // console.log(`Image source ${event.target.parentElement.getElementsByTagName('Img')[0].src}`);
     // console.log(`Prod. Name: ${event.target.parentElement.dataset.productName}`);
-    console.log(`Prod. Identity: ${event.target.parentElement.dataset.productId}`);
+    // console.log(`Prod. Identity: ${event.target.parentElement.dataset.productId}`);
     // console.log(`Prod. Price: £ ${event.target.parentElement.dataset.productPrice}`);
 
     let basketRow = document.createElement('div');
@@ -70,7 +74,7 @@ function removeProductFromBasket(event) {
 }
 
 function checkValidQuantity(event) {
-    console.log(typeof event.target.value)
+    // console.log(typeof event.target.value);
     if (isNaN(event.target.value)) {
         // Actually should not be possible for this input as type="number" but included for thoroughness.
         // Note nonetheless that paradoxically console.log(typeof event.target.value) will return 'string'.
@@ -127,13 +131,13 @@ function executePurchase() {
         // const id = basketRows[0].dataset.productId; version a
         const quantity = basketRows[i].getElementsByClassName('item-quantity-input')[0].value; // version b
         const id = basketRows[i].dataset.productId; // version b
-        console.log(`buy.js executePurchase() says i = ${i}`); // version b
-        console.log(`buy.js executePurchase() says: quantity, id: ${quantity, id}`);
+        // console.log(`buy.js executePurchase() says i = ${i}`); // version b
+        // console.log(`buy.js executePurchase() says: quantity, id: ${quantity, id}`);
         items.push({
             id: id,
             quantity: quantity
         })
-        console.log(`Product identity:${id}, quantity:${quantity}`);
+        // console.log(`Product identity:${id}, quantity:${quantity}`);
         // basketRows[0].remove(); // version a
     }
     // console.log(`executePurchase items object for toBuyRoutes:`)
@@ -153,13 +157,17 @@ function executePurchase() {
         resStatus = res.status;
         return res.json();
     }).then(function(resJSON) {
-        // console.log('VV buy.js executePurchase(): resJSON VV')
-        // console.log(resJSON)
+        // console.log('VV buy.js executePurchase(): resJSON VV');
+        console.log('resJSON.receiptInfo from purchase route');
+        console.log(resJSON.receiptInfo);
+        // console.log(resJSON.receiptInfo[0]);
+        // console.log(resJSON.receiptInfo[1]);
         if (resStatus.toString()[0] === '2') {
             Prettypay.open(resJSON.totalToCharge, {prefill: true, askAddress: false});
-            Prettypay.setSuccessFunction(() => {
+            Prettypay.setSuccessFunction((data) => {
                 clearItemsFromBasket();
                 updateTotals();
+                // window.location.href = `/toBuy/confirm/${data.uniqueTransactionReference}/${data.amountToProcess}/${data.currency}`
             });
         } else {
             Prettypay.abort(resJSON.message);
@@ -192,13 +200,13 @@ function generateUUID() { // generateUUID() is copied for processing simulation 
     });
 }
 
-// EXPERIMENTAL...
-
-// function getRes() {
-//     fetch('/prettypay/responseData')
-//     .then(function(response) {
-//         response.text().then(function(text) {
-//             console.log(text)
-//         });
-//     });
-// }
+function changeDivVisibility(event) {
+    const targetVisibilityElement = event.target.parentElement.parentElement.parentElement.children[1];
+    const targetTextElement = event.target.parentElement.parentElement.parentElement.children[0].children[0].children[0];
+    targetVisibilityElement.classList.toggle('invisible');
+    if (!targetVisibilityElement.classList.contains('invisible')) {
+        targetTextElement.innerHTML = '&hairsp;&times;';
+    } else {
+        targetTextElement.innerHTML = '&#9662;';
+    }
+}

@@ -2,10 +2,6 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
-// const prettyPay = require('../prettypay/routes/routes');
-// console.log(prettyPay);
-
-
 router.get('/buy', function(req, res) {
     let data;
     try {
@@ -45,7 +41,7 @@ router.post('/purchase', function(req, res) {
                 receiptInfo.push({'item': matchingBackendData.name, 'price per item': matchingBackendData.price,'quantity': itemBeingBought.quantity, 'sub-total': subtotal});
             })
             receiptInfo.push(`total: ${totalToCharge}`)
-            console.log(`total = ${totalToCharge}`);
+            // console.log(`total = ${totalToCharge}`);
             if (totalToCharge <= 0) {
                 res.status(401).json({
                     message: `Fictional purchase aborted by server with status 403 (forbidden): total charge of £ ${totalToCharge} is not greater than zero.`,
@@ -60,6 +56,14 @@ router.post('/purchase', function(req, res) {
             }
         }
     })
+})
+
+router.get('/confirm/:id/:amount/:currency', (req, res) => {
+    res.render('confirm', {
+        id: req.params.id,
+        amount: req.params.amount,
+        currency: req.params.currency
+    });
 })
 
 function JSONtoArray(JSON) {
