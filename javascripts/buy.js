@@ -1,14 +1,16 @@
-const removeBtnText = 'Remove from basket';
-
 if (document.readyState == 'loading') {
-	document.addEventListener('DOMContentLoaded', () => {  
-        addPrices;
-        addEventListener;
+	document.addEventListener('DOMContentLoaded', () => {
+        console.log('Loaded (waited)')
+        addPrices();
+        addEventListener();
     })
 } else {
+    console.log('Loaded (instantaneous)')
     addPrices();
     addEventListener();
 }
+
+const removeBtnText = 'Remove from basket';
 
 function addPrices() {
     let productPriceSpans = document.getElementsByClassName('productPriceSpan');
@@ -96,6 +98,7 @@ function updateTotals() {
     }
     total = Math.round(total * 100) / 100;
     let totalString = formatNumberToString(total);
+    // console.log(`buy.js updateTotals() says: totalString = ${totalString}`);
     document.getElementsByClassName('basket-total-price')[0].innerText = `£ ${totalString}`;
 }
 
@@ -115,41 +118,27 @@ function formatNumberToString(number) {
      return numberString;
 }
 
-// function initiatePurchase() {
-//     fetch('/toBuy/purchase', {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Accept': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             fictionalPurchaseToken: fictionalPurchaseToken,
-//             items: items
-//         })
-//     }).then(function(res) {
-//         return res.json();
-//     }).catch(function(error) {
-//         console.error(error);
-//     })
-// }
-
 function executePurchase() {
-    const fictionalPurchaseToken = generateUUID();
-    console.log(`Initiating fictional purchase with token ${fictionalPurchaseToken}`);
-
-    var items = []
-    var basketRows = document.getElementsByClassName('basket-items-div')[0].getElementsByClassName('basket-row')
-    while (basketRows.length > 0) {
-        const quantity = basketRows[0].getElementsByClassName('item-quantity-input')[0].value;
-        const id = basketRows[0].dataset.productId
+   let items = []
+    let basketRows = document.getElementsByClassName('basket-items-div')[0].getElementsByClassName('basket-row')
+    // while (basketRows.length > 0) { // version a
+    for (i=0; i<basketRows.length; i++) { // version b
+        // const quantity = basketRows[0].getElementsByClassName('item-quantity-input')[0].value; // version a
+        // const id = basketRows[0].dataset.productId; version a
+        const quantity = basketRows[i].getElementsByClassName('item-quantity-input')[0].value; // version b
+        const id = basketRows[i].dataset.productId; // version b
+        console.log(`buy.js executePurchase() says i = ${i}`); // version b
+        console.log(`buy.js executePurchase() says: quantity, id: ${quantity, id}`);
         items.push({
             id: id,
             quantity: quantity
         })
         console.log(`Product identity:${id}, quantity:${quantity}`);
-        basketRows[0].remove();
+        // basketRows[0].remove(); // version a
     }
-    
+    // console.log(`executePurchase items object for toBuyRoutes:`)
+    // console.log(items)
+    let resStatus = 0;
     fetch('/toBuy/purchase', {
         method: 'POST',
         headers: {
@@ -157,17 +146,34 @@ function executePurchase() {
             'Accept': 'application/json'
         },
         body: JSON.stringify({
-            fictionalPurchaseToken: fictionalPurchaseToken,
             items: items
         })
     }).then(function(res) {
+        // alert(res.status);
+        resStatus = res.status;
         return res.json();
     }).then(function(resJSON) {
-        alert(`Response from server: ${resJSON.message}; ${JSON.stringify(resJSON.receiptInfo)}`);
-        updateTotals();
+        // console.log('VV buy.js executePurchase(): resJSON VV')
+        // console.log(resJSON)
+        if (resStatus.toString()[0] === '2') {
+            Prettypay.open(resJSON.totalToCharge, {prefill: true, askAddress: false});
+            Prettypay.setSuccessFunction(() => {
+                clearItemsFromBasket();
+                updateTotals();
+            });
+        } else {
+            Prettypay.abort(resJSON.message);
+        }
     }).catch(function(error) {
         console.error(error);
     })
+}
+
+function clearItemsFromBasket() {
+    let basketRows = document.getElementsByClassName('basket-items-div')[0].getElementsByClassName('basket-row');
+    while (basketRows.length > 0) {
+        basketRows[0].remove();
+    }
 }
 
 function generateUUID() { // generateUUID() is copied for processing simulation purposes; this function has a Public Domain/MIT license.
@@ -185,3 +191,14 @@ function generateUUID() { // generateUUID() is copied for processing simulation 
         return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
     });
 }
+
+// EXPERIMENTAL...
+
+// function getRes() {
+//     fetch('/prettypay/responseData')
+//     .then(function(response) {
+//         response.text().then(function(text) {
+//             console.log(text)
+//         });
+//     });
+// }

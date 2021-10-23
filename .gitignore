@@ -1,6 +1,9 @@
 node_modules
-.env
+
 holding folder
 NOTES_TO_SELF.txt
 
-buy-COPY.ejs
+prettypay_old
+
+utils copy.js
+routes copy.js

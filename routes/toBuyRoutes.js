@@ -2,26 +2,30 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config({ path: './.env' });
-  }
-const paymentProcessorSecretKey = process.env.PAYMENT_PROCESSOR_SECRET_KEY;
+// const prettyPay = require('../prettypay/routes/routes');
+// console.log(prettyPay);
+
 
 router.get('/buy', function(req, res) {
-    fs.readFile('buyables.json', function(error, data) {
-        if (error) {
-            console.log('*ERROR*');
-            console.log(error);
-        } else {
-            res.render('buy', {
-                buyablesJSON: JSON.parse(data)
-            })
-        }
-    })
-})
+    let data;
+    try {
+        data = fs.readFileSync('buyables.json');
+        // res.render('buy', {
+        //     buyablesJSON: JSON.parse(data)
+        // });
+    } catch (error) {
+        console.log('*ERROR*');
+        console.log(error);
+        res.end();
+    }
+    res.render('buy', {
+        buyablesJSON: JSON.parse(data)
+    });
+});
 
 router.post('/purchase', function(req, res) {
-    console.log(req.body);
+    // console.log(req.body);
+    // console.log('^^req.body^^')
     fs.readFile('buyables.json', function(error, dataFromBuyablesFile) {
         if (error) {
             console.log(error);
@@ -43,17 +47,15 @@ router.post('/purchase', function(req, res) {
             receiptInfo.push(`total: ${totalToCharge}`)
             console.log(`total = ${totalToCharge}`);
             if (totalToCharge <= 0) {
-                // 403 Forbidden: The request contained valid data and was understood by the server, but the server is refusing action.
-                res.status(403).json({
-                    message: `Fictional purchase aborted by server with status 403 (forbidden): total charge of ${totalToCharge} is not greater than zero`,
-                    receiptInfo: 'Receipt information not applicable.',
-                    fictionalPurchaseToken: req.body.fictionalPurchaseToken
+                res.status(401).json({
+                    message: `Fictional purchase aborted by server with status 403 (forbidden): total charge of £ ${totalToCharge} is not greater than zero.`,
+                    receiptInfo: 'Receipt information not applicable.'
                 });
             } else {
                 res.json({
-                    message: `Successful fictional purchase processed by server; total charge of ${totalToCharge}`,
-                    receiptInfo: receiptInfo,
-                    fictionalPurchaseToken: req.body.fictionalPurchaseToken
+                    totalToCharge: totalToCharge,
+                    message: `Prettypay to process total charge of ${totalToCharge}`,
+                    receiptInfo: receiptInfo
                 })
             }
         }
