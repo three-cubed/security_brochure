@@ -34,16 +34,16 @@
                     <% for (const [key, products] of Object.entries(buyablesJSON)) { %>
                         <% let divProductType = JSON.stringify(key).replace(/\W/g, '')+'Div' %>
                         <% divProductType = divProductType.charAt(0).toLowerCase() + divProductType.slice(1) %>
-                        <div data-div-product-type='<%= divProductType %>'>
+                        <div id='<%= divProductType %>'>
                             
                             <div class='groupTitleSpan'>
                                 <h2>
                                     <span id='<%= divProductType %>OpenCloseIcon'>&#9662;</span>
-                                    <span>&nbsp;<%= JSON.stringify(key).replace(/\"/g, "") %></span>
+                                    <span id='<%= divProductType %>Title'>&nbsp;<%= JSON.stringify(key).replace(/\"/g, "") %></span>
                                 </h2>
                             </div>
 
-                            <div id='<%= divProductType %>VisibiltyDiv' class='invisible'>
+                            <div id='<%= divProductType %>VisibilityDiv' class='invisible'>
 
                                 <% products.forEach(product => { %>
                                     <% if (product.note) { %>
@@ -82,14 +82,14 @@
 
             <div id='shopping basket'>
                 <h2 class="section-header centredText">&ensp;🧺&ensp;Your Basket</h2>
-                <div class="basket-individual-product">
+                <!-- <div class="basket-individual-product">
                     <span class="basket-header basket-column">ITEM</span>
                     <span class="basket-header basket-column"></span>
                     <span class="basket-header basket-column">QUANTITY</span>
                     <span class="basket-header basket-column">PRICE</span>
                     <span class="basket-header basket-column">SUB-TOTAL</span>
                     <span class="basket-header basket-column"></span>
-                </div>
+                </div> -->
                 <div class="basket-items-div infoTextOnBuyPage">
                     <!-- This will be filled by DOM manipulation as items are cliked upon for purchase. -->
                 </div>

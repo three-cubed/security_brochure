@@ -2,12 +2,12 @@ if (document.readyState == 'loading') {
 	document.addEventListener('DOMContentLoaded', () => {
         console.log('Loaded (waited)')
         addPrices();
-        addEventListener();
+        addEventListeners();
     })
 } else {
     console.log('Loaded (instantaneous)')
     addPrices();
-    addEventListener();
+    addEventListeners();
 }
 
 const removeBtnText = 'Remove from basket';
@@ -19,15 +19,17 @@ function addPrices() {
     }
 }
 
-function addEventListener() {
+function addEventListeners() {
     // console.log(document.getElementsByClassName('btn-purchase')[0]);
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', executePurchase);
     let groupTitleSpans = document.getElementsByClassName('groupTitleSpan');
     for(i = 0; i < groupTitleSpans.length; i++) {
-        groupTitleSpans[i].addEventListener('click', changeDivVisibility);
+        let id = groupTitleSpans[i].parentElement.id;
+        groupTitleSpans[i].addEventListener('click', function(){
+            changeDivVisibility(id);
+        });
     };
 }
-
 
 function addToBasket(event) {
     // title, price, imageSrc, id
@@ -37,11 +39,11 @@ function addToBasket(event) {
     // console.log(`Prod. Price: £ ${event.target.parentElement.dataset.productPrice}`);
 
     let basketRow = document.createElement('div');
-    basketRow.classList.add('basket-row' ,'basket-individual-product');
+    basketRow.classList.add('basket-row');
     basketRow.dataset.productId = event.target.parentElement.dataset.productId;
     basketRow.dataset.productPrice = event.target.parentElement.dataset.productPrice;
     let basketItemsDiv = document.getElementsByClassName('basket-items-div')[0];
-    let basketItems = basketItemsDiv.getElementsByClassName('basket-individual-product');
+    let basketItems = basketItemsDiv.getElementsByClassName('basket-row');
     for (var i = 0; i < basketItems.length; i++) {
         if (basketItems[i].dataset.productId == event.target.parentElement.dataset.productId) {
             alert('This has already been put in the basket! If you want more, increase the stated quantity.');
@@ -58,10 +60,10 @@ function addToBasket(event) {
         </div>
         <span class="item-price basket-column">@ £ ${formatNumberToString(parseFloat(event.target.parentElement.dataset.productPrice))}</span>
         <span class="total-this-product basket-column"></span>
-        <button class="btn btn-danger" type="button">${removeBtnText}</button>`
+        <button class="btn btn-remove" type="button">${removeBtnText}</button>`
     basketRow.innerHTML = basketRowContents;
     basketItemsDiv.append(basketRow)
-    basketRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeProductFromBasket);
+    basketRow.getElementsByClassName('btn-remove')[0].addEventListener('click', removeProductFromBasket);
     basketRow.getElementsByClassName('item-quantity-input')[0].addEventListener('change', checkValidQuantity);
     basketRow.getElementsByClassName('item-quantity-input')[0].addEventListener('keyup', checkValidQuantity);
     updateTotals();
@@ -200,9 +202,10 @@ function generateUUID() { // generateUUID() is copied for processing simulation 
     });
 }
 
-function changeDivVisibility(event) {
-    const targetVisibilityElement = event.target.parentElement.parentElement.parentElement.children[1];
-    const targetTextElement = event.target.parentElement.parentElement.parentElement.children[0].children[0].children[0];
+function changeDivVisibility(id) {
+    // console.log(id)
+    const targetVisibilityElement = document.getElementById(`${id}VisibilityDiv`);
+    const targetTextElement = document.getElementById(`${id}OpenCloseIcon`);
     targetVisibilityElement.classList.toggle('invisible');
     if (!targetVisibilityElement.classList.contains('invisible')) {
         targetTextElement.innerHTML = '&hairsp;&times;';
