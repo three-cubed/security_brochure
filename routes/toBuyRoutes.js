@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
+const {
+    parseOrCreateJSON,
+    JSONtoArray
+} = require('../javascripts/utils.js');
+
 router.get('/buy', function(req, res) {
     let data;
     try {
@@ -38,9 +43,16 @@ router.post('/purchase', function(req, res) {
                     })
                 const subtotal = itemBeingBought.quantity * matchingBackendData.price;
                 totalToCharge += subtotal;
-                receiptInfo.push({'item': matchingBackendData.name, 'price per item': matchingBackendData.price,'quantity': itemBeingBought.quantity, 'sub-total': subtotal});
+                receiptInfo.push({
+                    'item': matchingBackendData.name,
+                    'price per item': matchingBackendData.price,
+                    'quantity': itemBeingBought.quantity,
+                    'sub-total': subtotal
+                });
             })
-            receiptInfo.push(`total: ${totalToCharge}`)
+            receiptInfo.push({
+                'total': `${totalToCharge}`
+            })
             // console.log(`total = ${totalToCharge}`);
             if (totalToCharge <= 0) {
                 res.status(401).json({
@@ -58,22 +70,57 @@ router.post('/purchase', function(req, res) {
     })
 })
 
-router.get('/confirm/:id/:amount/:currency', (req, res) => {
-    res.render('confirm', {
-        id: req.params.id,
-        amount: req.params.amount,
-        currency: req.params.currency
-    });
+router.post('/postReceipt', function(req, res) {
+    fileToRecordIn = './receipts/receipts.json';
+    try {
+        fs.readFile(fileToRecordIn, function(error, dataInFile) { // Should not be sync as will stall in case of faulty record files.
+            if (error) {
+                console.log('error at /postReceipt point 1');
+                console.log(error);
+            } else {
+                try {
+                    const dataArray = parseOrCreateJSON(dataInFile, fileToRecordIn);
+                    dataArray.unshift(req.body.receiptInfo);
+                    while (dataArray.length > 100) dataArray.pop(); // To prevent file getting too long, 100 records!
+                    const dataStringForSending = JSON.stringify(dataArray);
+                    fs.writeFile(fileToRecordIn, dataStringForSending, (err) => {
+                        if (err) {
+                            console.log('error at /postReceipt point 2');
+                            console.log(error);
+                        }
+                    });
+                } catch (error) {
+                    console.log('error at /postReceipt point 3');
+                    console.log(error);
+                }
+            }
+        })
+    } catch (error) {
+        console.log(error);
+    }
 })
 
-function JSONtoArray(JSON) {
-    let array = [];
-    for (const [key, items] of Object.entries(JSON)) {
-        items.forEach(item => {
-            array.push(item)
-        })
+router.get('/confirm/:uniqueTransactionReference/:amount/:currency', (req, res) => {
+
+    let receiptInfo = null;
+    let uniqueTransactionReference = req.params.uniqueTransactionReference;
+    const dataInFile = fs.readFileSync('./receipts/receipts.json');
+    dataArray = parseOrCreateJSON(dataInFile, './receipts/receipts.json');
+    for (let i = 0; i < dataArray.length; i++) {
+        if (dataArray[i][0].uniqueTransactionReference === uniqueTransactionReference) {
+            receiptInfo = dataArray[i];
+        }
     }
-    return array;
-}
+    console.log('receiptInfo for confirm.ejs')
+    console.log(receiptInfo)
+    console.log('receiptInfo[receiptInfo.length - 1] as found at routes')
+    console.log(receiptInfo[receiptInfo.length - 1])
+    res.render('confirm', {
+        uniqueTransactionReference: req.params.uniqueTransactionReference,
+        amount: req.params.amount,
+        currency: req.params.currency,
+        receiptInfo: receiptInfo
+    });
+})
 
 module.exports = router;

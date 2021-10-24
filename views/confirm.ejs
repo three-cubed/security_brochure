@@ -8,10 +8,27 @@
 <body>
     <h2>Transaction successful!</h2>
     <br>
-    <h3>Payment details from Prettypay</h3>
-    <p><%= currency %>&nbsp;<%= amount %> debited to your account.</p>
-    <p>Unique transaction identifier: <%= id %></p>
-    <br>
+
+    <div class='receiptInfoContainer'>
+        <h3>Your receipt from Firefly Fictional Security Services</h3>
+        <% if (receiptInfo !== null) { %>
+            <% for (let i = 1; i+1 < receiptInfo.length; i++) { %>
+                <% for (const [key, value] of Object.entries(receiptInfo[i])) { %>
+                    <%= key %>: <%= value %><br>
+                <% } %>
+                <br>
+            <% } %>
+            Total purchase: £ <%= receiptInfo[receiptInfo.length - 1].total %>
+        <% } %>
+        <br>
+    </div>
+
+    <div class='receiptInfoContainer'>
+        <h3>Payment details from Prettypay</h3>
+        <p><%= currency %>&nbsp;<%= amount %> debited to your account.</p>
+        <p>Unique transaction identifier: <%= uniqueTransactionReference %></p>
+        <br>        
+    </div>
     <button><a href='/'>Return to home page.</a></button>
 </body>
 </html>

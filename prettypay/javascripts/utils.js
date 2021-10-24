@@ -29,7 +29,6 @@ function parseOrCreateJSON(data, srcFile = null) {
         console.log(e);
         console.log(`Failed to parse: ${srcFile}; returning parsed '[]' after rewriting file at recordTransaction()`);
         if (srcFile !== null) {
-            
             fs.writeFileSync(srcFile, '[]', (err) => {
                 if (err) throw err;
             });
@@ -69,7 +68,7 @@ function searchForUnprocessedTransactions(dataArray) {
 }
 
 function recordTransaction(responseObject) {
-    // console.log('**recordTransaction() is beginning**');
+    // console.log('** recordTransaction() is beginning **');
     if (responseObject.successful === true) {
         fileToRecordIn = './prettypay/records/transactions.json';
     } else {
@@ -186,4 +185,4 @@ function prepareDataToReport(filename) {
     return data
 }
 
-module.exports = { matchPreprocessingData, recordTransaction, checkCardExpiry, generateUUID, formatNumberToString, preprocessData, prepareDataToReport };
+module.exports = { matchPreprocessingData, recordTransaction, checkCardExpiry, generateUUID, formatNumberToString, preprocessData, prepareDataToReport, parseOrCreateJSON };

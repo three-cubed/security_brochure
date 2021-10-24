@@ -20,7 +20,13 @@ a, a:visited {
 }
 
 .btn-remove {
-    margin: 6px;
+    height: 32px;
+    align-self: center;
+}
+
+.basket-column {
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
 
 .basket-row {
@@ -29,8 +35,12 @@ a, a:visited {
     min-width: 90vw;
     justify-content: space-evenly;
     border: solid 1px black;
-    margin: 5px 5vw;
-    padding: 2px;
+    margin: 6px 5vw; /* i.e. top/bottom = 6px; left/right = 5vw;*/
+    /* padding: 2px; */
+    padding-top: 4px;
+    padding-bottom: 5px;
+    padding-left: 1px;
+    padding-right: 1px;
     border-radius: 3%;
 }
 
@@ -412,6 +422,10 @@ input {
 .offerBoxTopPart {
     font-size: 34px;
     height: 125px;
+}
+
+.openCloseIcon {
+    color: #D3D3D3;
 }
 
 .photoWithinTextBox {

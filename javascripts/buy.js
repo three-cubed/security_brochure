@@ -53,6 +53,8 @@ function addToBasket(event) {
     var basketRowContents = `
         <div class="basket-column">
             <img class="basket-item-image" src="${event.target.parentElement.getElementsByTagName('Img')[0].src}" width="24" height="24">
+        </div>
+        <div class="basket-column centredText centredContent">
             <span class="basket-item-title">${event.target.parentElement.dataset.productName}</span>
         </div>
         <div class="item-quantity basket-column">
@@ -159,17 +161,21 @@ function executePurchase() {
         resStatus = res.status;
         return res.json();
     }).then(function(resJSON) {
-        // console.log('VV buy.js executePurchase(): resJSON VV');
-        console.log('resJSON.receiptInfo from purchase route');
-        console.log(resJSON.receiptInfo);
+        // console.log('resJSON.receiptInfo from purchase route');
+        // console.log(resJSON.receiptInfo);
         // console.log(resJSON.receiptInfo[0]);
         // console.log(resJSON.receiptInfo[1]);
         if (resStatus.toString()[0] === '2') {
             Prettypay.open(resJSON.totalToCharge, {prefill: true, askAddress: false});
             Prettypay.setSuccessFunction((data) => {
+                let receiptInfo = resJSON.receiptInfo;
+                receiptInfo.unshift({ 
+                    uniqueTransactionReference: data.uniqueTransactionReference
+                });
+                postReceipt(receiptInfo);
                 clearItemsFromBasket();
                 updateTotals();
-                // window.location.href = `/toBuy/confirm/${data.uniqueTransactionReference}/${data.amountToProcess}/${data.currency}`
+                window.location.href = `/toBuy/confirm/${data.uniqueTransactionReference}/${data.amountToProcess}/${data.currency}`
             });
         } else {
             Prettypay.abort(resJSON.message);
@@ -184,6 +190,19 @@ function clearItemsFromBasket() {
     while (basketRows.length > 0) {
         basketRows[0].remove();
     }
+}
+
+function postReceipt(receiptInfo) {
+    fetch('/toBuy/postReceipt', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            receiptInfo: receiptInfo
+        })
+    })
 }
 
 function generateUUID() { // generateUUID() is copied for processing simulation purposes; this function has a Public Domain/MIT license.
