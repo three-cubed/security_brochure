@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Executive Protection Services</title>
+    <title>Technical Surveillance</title>
     <link rel="stylesheet" href="../styles/main.css">
     <script src="/javascripts/otherPages.js" async></script>
 </head>
@@ -11,20 +11,20 @@
 
     <% const titleArray = 
         <!-- titleArray consists of the page title followed by the divisional titles in order. -->
-        ['Executive Protection Services', 'Close Protection', 'Event Security', 'Protective Surveillance']; 
+        ['Technical Surveillance', 'Close Protection', 'Event Security', 'Protective Surveillance']; 
     %>
 
-    <%- include('./partials/headBannerTop.ejs') %>
-        <%- include('./partials/headBannerChoice.ejs', {divTitle: titleArray[1]}) %>
-        <%- include('./partials/headBannerChoice.ejs', {divTitle: titleArray[2]}) %>
-        <%- include('./partials/headBannerChoice.ejs', {divTitle: titleArray[3]}) %>
-    <%- include('./partials/headBannerBottom.ejs') %>
+    <%- include('../partials/headBannerTop.ejs') %>
+        <%- include('../partials/headBannerChoice.ejs', {divTitle: titleArray[1]}) %>
+        <%- include('../partials/headBannerChoice.ejs', {divTitle: titleArray[2]}) %>
+        <%- include('../partials/headBannerChoice.ejs', {divTitle: titleArray[3]}) %>
+    <%- include('../partials/headBannerBottom.ejs') %>
 
     <div class='belowHeadBannerOtherPages'>
 
-        <%- include('./partials/pageTitle.ejs', {pageTitle: titleArray[0]}) %>
+        <%- include('../partials/pageTitle.ejs', {pageTitle: titleArray[0]}) %>
         
-        <%- include('./partials/introPartialTop.ejs') %>
+        <%- include('../partials/introPartialTop.ejs') %>
             <em>
                 Keep yourself and your loved ones safe, protected by our polished professionals
             </em>
@@ -43,9 +43,9 @@
                     To find out more, scroll down, or click one of the choices above!
                 </em>
             </p>
-        <%- include('./partials/introPartialBottom.ejs') %>
+        <%- include('../partials/introPartialBottom.ejs') %>
 
-        <%- include('./partials/informationBoxTop.ejs', {divTitle: titleArray[1], divImage: '../images/bodyguards-erdogan.jpeg'}) %>
+        <%- include('../partials/informationBoxTop.ejs', {divTitle: titleArray[1], divImage: '../images/bodyguards-erdogan.jpeg'}) %>
             <em>
                 Have our best men by your side, whenever you need.
             </em>
@@ -67,9 +67,9 @@
                 fodere aut arare aut aliquid ferre denique' -- non enim illum ab industria, sed ab inliberali labore deterret --, 
                 sic isti curiosi, quos offendit noster minime nobis iniucundus labor.
             </p>
-        <%- include('./partials/informationBoxBottom.ejs') %>
+        <%- include('../partials/informationBoxBottom.ejs') %>
   
-        <%- include('./partials/informationBoxTop.ejs', {divTitle: titleArray[2], divImage: '../images/event-security.jpeg'}) %>
+        <%- include('../partials/informationBoxTop.ejs', {divTitle: titleArray[2], divImage: '../images/event-security.jpeg'}) %>
             <em>
                 Feel secure at your gatherings, with a team of our expert personnel.
             </em>
@@ -85,9 +85,9 @@
                 postremo aliquos futuros suspicor, qui me ad alias litteras vocent, genus hoc scribendi, etsi sit elegans, personae tamen et
                 dignitatis esse negent.
             </p>
-        <%- include('./partials/informationBoxBottom.ejs') %>
+        <%- include('../partials/informationBoxBottom.ejs') %>
 
-        <%- include('./partials/informationBoxTop.ejs', {divTitle: titleArray[3], divImage: '../images/photographer-sun-behind.jpeg'}) %>
+        <%- include('../partials/informationBoxTop.ejs', {divTitle: titleArray[3], divImage: '../images/photographer-sun-behind.jpeg'}) %>
             <em>
                 For those seeking a less obtrusive way to protect themselves and others.
             </em>
@@ -99,13 +99,11 @@
             <p>
                 nam quibusdam, et iis quidem non admodum indoctis, totum hoc displicet philosophari. nam quibusdam, et iis quidem non admodum indoctis, totum hoc displicet philosophari.
             </p>
-        <%- include('./partials/informationBoxBottom.ejs') %>
+        <%- include('../partials/informationBoxBottom.ejs') %>
 
-        <%- include('./partials/footSection.ejs') %>
+        <%- include('../partials/footSection.ejs') %>
 
     </div>
-
-    <!-- <script src="/javascripts/otherPages.js"></script> -->
 
 </body>
 

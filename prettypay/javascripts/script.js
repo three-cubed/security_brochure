@@ -130,10 +130,6 @@ function addEventListenersAndResetForm() {
 
     paymentFormPP.reset();
 
-    overlayPP.addEventListener('click', () => {
-        closeAnyModals();
-    })
-
     closeModalButtonsPP.forEach(button => {
         const newId = `${button.parentElement.parentElement.id}-close-button`
         button.setAttribute('id', newId)

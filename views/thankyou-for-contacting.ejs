@@ -3,13 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="/javascripts/otherPages.js" async></script>
     <title>Contact made!</title>
 </head>
 <body>
-    Thank you for concting us!
-    <br>
-    We endeavour to respond to all enquires within four working days.
-    <br>
-    <a href='../'>Return to home page</a>
+
+    <% const titleArray =
+        <!-- titleArray consists of the page title followed by the divisional titles in order. -->
+        ['Contact made!'];
+    %>
+
+    <%- include('./partials/headBannerTop.ejs') %>
+    <%- include('./partials/headBannerBottom.ejs') %>
+
+    <div class='belowHeadBannerOtherPages'>
+
+        <%- include('./partials/pageTitle.ejs', {pageTitle: titleArray[0]}) %>
+
+        <div class='centredContent'>
+            <div class='flexColumn'>
+
+                <br><br>
+
+                <div class='receiptInfoContainer centredText'>
+                    <h3>Thank you for contacting us!</h3>
+                    <h4>We endeavour to respond to all enquires within four working days.</h4>
+                </div>
+
+                <br>
+
+                <button class='linkBtn'><a href='/'>Return to home page.</a></button>
+
+            </div>
+        </div>
+
+        <%- include('./partials/copyright.txt') %>
+
+    </div>
+
 </body>
 </html>

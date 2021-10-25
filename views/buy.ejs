@@ -22,8 +22,10 @@
 
         <%- include('./partials/pageTitle.ejs', {pageTitle: titleArray[0]}) %>
 
-            <p class='centredText'>For surveillance, management services, or private investigations, our services are highly tailored to your needs and prices vary accordingly.<br>
-                For these services, you are very welcome to <a href='/contact-form'><u>contact us</u></a> so that we can discuss your needs and offer a quote.</p>
+            <p class='centredText infoTextOnBuyPage'>
+                For technical surveillance, security management, and private investigations, our services are highly tailored to your needs and prices vary accordingly.
+                For these services, you are very welcome to <a href='/contact-form'><u>contact us</u></a> so that we can discuss your needs and offer a quote.
+            </p>
             <br>
 
             <div class='productsDivOuter'>
@@ -101,7 +103,9 @@
                     <button class="btn btn-purchase" type="button">PURCHASE</button>
                 </div>
             </div>
-            <br><br><br>
+
+            <%- include('./partials/copyright.txt') %>
+
             <%- include('../prettypay/views/view.ejs')%>
 
     </div>

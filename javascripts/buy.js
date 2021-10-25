@@ -172,10 +172,15 @@ function executePurchase() {
                 receiptInfo.unshift({ 
                     uniqueTransactionReference: data.uniqueTransactionReference
                 });
-                postReceipt(receiptInfo);
                 clearItemsFromBasket();
                 updateTotals();
-                window.location.href = `/toBuy/confirm/${data.uniqueTransactionReference}/${data.amountToProcess}/${data.currency}`
+                const finishOff = async () => {
+                    postReceipt(receiptInfo);
+                    return data;
+                }
+                finishOff().then(function(data) {
+                    window.location.href = `/toBuy/confirm/${data.uniqueTransactionReference}/${data.amountToProcess}/${data.currency}`
+                });
             });
         } else {
             Prettypay.abort(resJSON.message);

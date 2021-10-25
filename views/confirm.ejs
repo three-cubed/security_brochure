@@ -3,32 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="/javascripts/otherPages.js" async></script>
+    <title>Transaction successful!</title>
 </head>
 <body>
-    <h2>Transaction successful!</h2>
-    <br>
 
-    <div class='receiptInfoContainer'>
-        <h3>Your receipt from Firefly Fictional Security Services</h3>
-        <% if (receiptInfo !== null) { %>
-            <% for (let i = 1; i+1 < receiptInfo.length; i++) { %>
-                <% for (const [key, value] of Object.entries(receiptInfo[i])) { %>
-                    <%= key %>: <%= value %><br>
-                <% } %>
+    <% const titleArray =
+        <!-- titleArray consists of the page title followed by the divisional titles in order. -->
+        ['Transaction successful!'];
+    %>
+
+    <%- include('./partials/headBannerTop.ejs') %>
+    <%- include('./partials/headBannerBottom.ejs') %>
+
+    <div class='belowHeadBannerOtherPages'>
+
+        <%- include('./partials/pageTitle.ejs', {pageTitle: titleArray[0]}) %>
+
+        <div class='centredContent'>
+            <div class='flexColumn'>
+
+                <div class='receiptInfoContainer'>
+                    <h3>Your receipt from Firefly Fictional Security Services</h3>
+                    <p>
+                        <% if (receiptInfo === null) { %>
+                            <p>There is no receipt information from Firefly to display at this time.</p>
+                        <% } %>
+
+                        <% if (receiptInfo !== null) { %>
+                            <% for (let i = 1; i+1 < receiptInfo.length; i++) { %>
+                                <% for (const [key, value] of Object.entries(receiptInfo[i])) { %>
+                                    <%= key %>: <%= value %><br>
+                                <% } %>
+                                <br>
+                            <% } %>
+                            Total purchase: £ <%= receiptInfo[receiptInfo.length - 1].total %>
+                        <% } %>
+                    </p>
+                    <br>
+                </div>
+
                 <br>
-            <% } %>
-            Total purchase: £ <%= receiptInfo[receiptInfo.length - 1].total %>
-        <% } %>
-        <br>
+
+                <div class='receiptInfoContainer'>
+                    <h3>Payment details from Prettypay</h3>
+                    <p><%= currency %>&nbsp;<%= amount %> debited to your account.</p>
+                    <p>Unique transaction identifier: <%= uniqueTransactionReference %></p>
+                    <br>
+                </div>
+
+                <br>
+
+                <button class='linkBtn'><a href='/'>Return to home page.</a></button>
+
+            </div>
+        </div>
+
+        <%- include('./partials/copyright.txt') %>
+
     </div>
 
-    <div class='receiptInfoContainer'>
-        <h3>Payment details from Prettypay</h3>
-        <p><%= currency %>&nbsp;<%= amount %> debited to your account.</p>
-        <p>Unique transaction identifier: <%= uniqueTransactionReference %></p>
-        <br>        
-    </div>
-    <button><a href='/'>Return to home page.</a></button>
 </body>
 </html>

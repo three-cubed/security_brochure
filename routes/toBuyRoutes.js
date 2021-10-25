@@ -113,8 +113,6 @@ router.get('/confirm/:uniqueTransactionReference/:amount/:currency', (req, res) 
     }
     console.log('receiptInfo for confirm.ejs')
     console.log(receiptInfo)
-    console.log('receiptInfo[receiptInfo.length - 1] as found at routes')
-    console.log(receiptInfo[receiptInfo.length - 1])
     res.render('confirm', {
         uniqueTransactionReference: req.params.uniqueTransactionReference,
         amount: req.params.amount,
