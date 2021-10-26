@@ -12,11 +12,12 @@
     <% const titleArray = 
         <!-- titleArray consists of the page title followed by the divisional titles in order. -->
         ['Technical Surveillance', 'Technical Surveillance', 'Technical Counter-surveillance'];
+        const imagePath = '../images/technical-surveillance/';
     %>
 
     <%- include('../partials/headBannerTop.ejs') %>
-        <%- include('../partials/headBannerChoice.ejs', {divTitle: titleArray[1]}) %>
-        <%- include('../partials/headBannerChoice.ejs', {divTitle: titleArray[2]}) %>
+        <%- include('../partials/headBannerChoice.ejs', { divTitle: titleArray[1] }) %>
+        <%- include('../partials/headBannerChoice.ejs', { divTitle: titleArray[2] }) %>
     <%- include('../partials/headBannerBottom.ejs') %>
 
     <div class='belowHeadBannerOtherPages'>
@@ -39,7 +40,7 @@
             </p>
         <%- include('../partials/introPartialBottom.ejs') %>
 
-        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[1], divImage: '../images/bodyguards-erdogan.jpeg' }) %>
+        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[1], divImage: `${imagePath}technical-surveillance.jpg` }) %>
             <em>
                 A wide range of surveillance possibilities.
             </em>
@@ -51,7 +52,7 @@
             <p>
                 Common client requests include:
                 <ul>
-                    <li>Burglar alarms</li>
+                    <li>Camera networks</li>
                     <li>Personal identification technology</li>
                     <li>Drones</li>
                     <li>Social network analysis</li>
@@ -59,7 +60,7 @@
             </p>
         <%- include('../partials/informationBoxBottom.ejs') %>
   
-        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[2], divImage: '../images/event-security.jpeg' }) %>
+        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[2], divImage: `${imagePath}technical-counter-surveillance.jpg` }) %>
             <em>
                 Make sure that surveillance does not put you in danger.
             </em>

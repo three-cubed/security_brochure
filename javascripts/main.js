@@ -8,11 +8,12 @@ function scrollAndOffset(place, pixels) {
 
 // Simply add any new image here with an index number. No other changes required.
 let images = [];
-images[0] = './images/london-security-landscape.jpeg';
-images[1] = './images/cyber-padlocks.jpeg';
-images[2] = './images/countryside-car-security.jpeg';
-images[3] = './images/security-cyber-silhouettes.jpeg';
-images[4] = './images/masked-office-man.jpeg';
+const imagePath = './images/slideshow/'
+images[0] = `${imagePath}london-security-landscape.jpeg`;
+images[1] = `${imagePath}cyber-padlocks.jpeg`;
+images[2] = `${imagePath}countryside-car-security.jpeg`;
+images[3] = `${imagePath}security-cyber-silhouettes.jpeg`;
+images[4] = `${imagePath}masked-office-man.jpeg`;
 
 const time = 4200;	// Time for each image to show.
 let i = 0;

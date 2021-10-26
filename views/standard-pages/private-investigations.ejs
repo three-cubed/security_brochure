@@ -12,20 +12,21 @@
     <% const titleArray = 
         <!-- titleArray consists of the page title followed by the divisional titles in order. -->
         ['Private Investigations', 'Corporate investigations', 'Personal investigations']; 
+        const imagePath = '../images/private-investigations/';
     %>
 
     <%- include('../partials/headBannerTop.ejs') %>
-        <%- include('../partials/headBannerChoice.ejs', {divTitle: titleArray[1]}) %>
+        <%- include('../partials/headBannerChoice.ejs', { divTitle: titleArray[1] }) %>
         <%- include('../partials/headBannerChoice.ejs', { divTitle: titleArray[2] }) %>
     <%- include('../partials/headBannerBottom.ejs') %>
 
     <div class='belowHeadBannerOtherPages'>
 
-        <%- include('../partials/pageTitle.ejs', { pageTitle: divTitle: titleArray[0] }) %>
+        <%- include('../partials/pageTitle.ejs', { pageTitle: titleArray[0], divTitle: titleArray[0] }) %>
         
         <%- include('../partials/introPartialTop.ejs') %>
             <em>
-                Let us help you know what you need to know.
+                Let us help you know what you need to know, discreetly.
             </em>
             <p>
                 Whether for your business or your home, our investigators will find out what you need to know.
@@ -38,29 +39,33 @@
             </p>
         <%- include('../partials/introPartialBottom.ejs') %>
 
-        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[1], divImage: '../images/bodyguards-erdogan.jpeg' }) %>
+        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[1], divImage: `${imagePath}corporate-investigations.jpg` }) %>
             <em>
                 Keep your business safe.
             </em>
             <p>
-                If you suspect your business rivals are up to no good, we can find out for sure,
-                exposing their wrong-doing or -as is happily often the case- setting your mind at ease.
+                If you suspect your business rivals are up to no good, we can find out for sure.
+                If you fear your colleagues are betraying you, we can get to the bottom of it.
+                We will find and expose wrong-doing.
+                As is happily often the case, we will be able to set your mind at ease if your fears were unfounded.
             </p>
             <p>
-                From industrial espionage to insider dealing, we have seen it all and exposed it all.
+                From stolen secrets to stolen teabags,
+                from missing toilet roll to missing millions,
+                we have seen it all and solved it all.
                 Our network of contacts includes experts in every field of business and finance.
                 No web of deceit is too complex for our tarantulan team.
             </p>
         <%- include('../partials/informationBoxBottom.ejs') %>
   
-        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[2], divImage: '../images/event-security.jpeg' }) %>
+        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[2], divImage: `${imagePath}personal-investigations.jpg` }) %>
             <em>
                 Don't let your personal life fall victim to deceit!
             </em>
             <p>
                 Many clients feel the need to make sense of personal issues.
                 From unexplained disappearances to disappearing artworks, we can get you the information you are looking for.
-                Please do not blame us if it leads to divorce.
+                Delight or divorce? Let the evidence decide.
             </p>
         <%- include('../partials/informationBoxBottom.ejs') %>
 

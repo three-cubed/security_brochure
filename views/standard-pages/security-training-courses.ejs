@@ -12,12 +12,13 @@
     <% const titleArray = 
         <!-- titleArray consists of the page title followed by the divisional titles in order. -->
         ['Security Training Courses', 'Basic Security Course', 'Event Security Courses', 'Close Protection Courses'];
+        const imagePath = '../images/security-training-courses/';
     %>
 
     <%- include('../partials/headBannerTop.ejs') %>
-        <%- include('../partials/headBannerChoice.ejs', {divTitle: titleArray[1]}) %>
-        <%- include('../partials/headBannerChoice.ejs', {divTitle: titleArray[2]}) %>
-        <%- include('../partials/headBannerChoice.ejs', {divTitle: titleArray[3]}) %>
+        <%- include('../partials/headBannerChoice.ejs', { divTitle: titleArray[1] }) %>
+        <%- include('../partials/headBannerChoice.ejs', { divTitle: titleArray[2] }) %>
+        <%- include('../partials/headBannerChoice.ejs', { divTitle: titleArray[3] }) %>
     <%- include('../partials/headBannerBottom.ejs') %>
 
     <div class='belowHeadBannerOtherPages'>
@@ -39,7 +40,7 @@
             </p>
         <%- include('../partials/introPartialBottom.ejs') %>
 
-        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[1], divImage: '../images/bodyguards-erdogan.jpeg' }) %>
+        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[1], divImage: `${imagePath}basic-security.jpg` }) %>
             <em>
                 Building firm foundations, this course covers skills every security professional needs.
             </em>
@@ -67,7 +68,7 @@
             </p>
         <%- include('../partials/informationBoxBottom.ejs') %>
   
-        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[2], divImage: '../images/event-security.jpeg' }) %>
+        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[2], divImage: `${imagePath}event-security.jpg` }) %>
             <em>
                 Feel secure at your gatherings, with a team of our expert personnel.
             </em>
@@ -83,7 +84,7 @@
             </p>
         <%- include('../partials/informationBoxBottom.ejs') %>
 
-        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[3], divImage: '../images/photographer-sun-behind.jpeg' }) %>
+        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[3], divImage: `${imagePath}close-protection.jpg` }) %>
             <em>
                 Preparing for the most demanding (and best paid roles) in security...
             </em>

@@ -12,11 +12,12 @@
     <% const titleArray = 
         <!-- titleArray consists of the page title followed by the divisional titles in order. -->
         ['Security Consultancy Services', 'Standard Consultancy', 'Strategic Consultancy'];
+        const imagePath = '../images/security-consultancy/';
     %>
 
     <%- include('../partials/headBannerTop.ejs') %>
-        <%- include('../partials/headBannerChoice.ejs', {divTitle: titleArray[1]}) %>
-        <%- include('../partials/headBannerChoice.ejs', {divTitle: titleArray[2]}) %>
+        <%- include('../partials/headBannerChoice.ejs', { divTitle: titleArray[1] }) %>
+        <%- include('../partials/headBannerChoice.ejs', { divTitle: titleArray[2] }) %>
     <%- include('../partials/headBannerBottom.ejs') %>
 
     <div class='belowHeadBannerOtherPages'>
@@ -38,7 +39,7 @@
             </p>
         <%- include('../partials/introPartialBottom.ejs') %>
 
-        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[1], divImage: '../images/bodyguards-erdogan.jpeg' }) %>
+        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[1], divImage: `${imagePath}standard-consultancy.jpg` }) %>
             <em>
                 Our standard service is efficient and effective.
             </em>
@@ -54,7 +55,7 @@
             </p>
         <%- include('../partials/informationBoxBottom.ejs') %>
   
-        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[2], divImage: '../images/event-security.jpeg' }) %>
+        <%- include('../partials/informationBoxTop.ejs', { divTitle: titleArray[2], divImage: `${imagePath}strategic-consultancy.jpg` }) %>
             <em>
                 For a detailed strategic review at a deeper level, our <strong>deep strategic consultancy</strong> is your ideal choice.
                 in-depth research, analysis and advice is without real-world equal.
