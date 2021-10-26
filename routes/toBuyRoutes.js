@@ -2,9 +2,12 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
+// const conceptsOnOffer = 'Our Services';
+
 const {
     parseOrCreateJSON,
-    JSONtoArray
+    JSONtoArray,
+    conceptsOnOffer
 } = require('../javascripts/utils.js');
 
 router.get('/buy', function(req, res) {
@@ -20,7 +23,8 @@ router.get('/buy', function(req, res) {
         res.end();
     }
     res.render('buy', {
-        buyablesJSON: JSON.parse(data)
+        buyablesJSON: JSON.parse(data),
+        conceptsOnOffer: conceptsOnOffer
     });
 });
 
@@ -117,7 +121,8 @@ router.get('/confirm/:uniqueTransactionReference/:amount/:currency', (req, res) 
         uniqueTransactionReference: req.params.uniqueTransactionReference,
         amount: req.params.amount,
         currency: req.params.currency,
-        receiptInfo: receiptInfo
+        receiptInfo: receiptInfo,
+        conceptsOnOffer: conceptsOnOffer
     });
 })
 

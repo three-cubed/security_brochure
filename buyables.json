@@ -1,20 +1,4 @@
 {
-    "Risk Management": [
-        {
-            "id": 111,
-            "name": "Security consultancy review",
-            "unitSoldBy": "per consultant per week",
-            "price": 1200,
-            "imgName": "genericImage.png"
-        },
-        {
-            "id": 222,
-            "name": "Deep strategic security consultancy & planning",
-            "unitSoldBy": "per consultant per week",
-            "price": 1440,
-            "imgName": "genericImage.png"
-        }
-    ],
     "Executive Protection Services": [
         {
             "id": 333,
@@ -75,6 +59,22 @@
             "name": "Close Protection Refresher Training",
             "unitSoldBy": "two days",
             "price": 312,
+            "imgName": "genericImage.png"
+        }
+    ],
+    "Security Consultancy Services": [
+        {
+            "id": 111,
+            "name": "Security consultancy review",
+            "unitSoldBy": "per consultant per week",
+            "price": 1200,
+            "imgName": "genericImage.png"
+        },
+        {
+            "id": 222,
+            "name": "Deep strategic security consultancy",
+            "unitSoldBy": "per consultant per week",
+            "price": 2000,
             "imgName": "genericImage.png"
         }
     ]

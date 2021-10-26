@@ -10,17 +10,11 @@
 </head>
 <body>
 
-    <% const titleArray = 
-        <!-- titleArray consists of the page title followed by the divisional titles in order. -->
-        ['Buy Services from Firefly Fictional!']; 
-    %>
-
-    <%- include('./partials/headBannerTop.ejs') %>
-    <%- include('./partials/headBannerBottom.ejs') %>
+    <%- include('./partials/headBannerWithLinks.ejs') %>
 
     <div class='belowHeadBannerOtherPages'>
 
-        <%- include('./partials/pageTitle.ejs', {pageTitle: titleArray[0]}) %>
+        <%- include('./partials/pageTitle.ejs', {pageTitle: 'Buy Services from Firefly Fictional!'}) %>
 
             <p class='centredText infoTextOnBuyPage'>
                 For technical surveillance, security management, and private investigations, our services are highly tailored to your needs and prices vary accordingly.

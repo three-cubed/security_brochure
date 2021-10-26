@@ -350,24 +350,20 @@ input {
     margin: 13px;
 }
 
-#logoAtTop, .logoAtTopOtherPages{
+#logoAtTop, .logoAtTopOtherPages {
     width: 5vw;
     min-width: 45px;
     height: 5vw;
     min-height: 45px;
     border: 0.5vw solid var(--themeColour);
     z-index: 10;
-}
-
-#logoAtTop {
     position: relative;
-    top: 33px;
+    top: 32px;
+    /* top: calc(58px - 2vw); */
 }
 
-.logoAtTopOtherPages{
+.logoAtTopOtherPages {
     cursor: pointer;
-    position: relative;
-    top: 28px;
 }
 
 #lowerPart {

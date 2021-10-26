@@ -1,7 +1,7 @@
 if (document.readyState == 'loading') {
-	document.addEventListener('DOMContentLoaded', addEventListeners)
+    document.addEventListener('DOMContentLoaded', addEventListeners);
 } else {
-	addEventListeners();
+    addEventListeners();
 }
 
 function addEventListeners() {
@@ -26,5 +26,5 @@ function scrollAndOffset(place, pixels) {
 }
 
 function goHome() {
-    window.location.href = "../"
+    window.location.href = "../";
 }

@@ -1,5 +1,3 @@
-<% const conceptsOnOffer = 'Our Services' %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +11,7 @@
     <div id='headBanner' class='banner'>
         <div id='headBannerContent'>
             <br>
-            <img id='logoAtTop' src="./public/company-logo.png" alt="Logo">
+            <img id='logoAtTop' src="/public/company-logo.png" alt="Logo">
             <div id='headBannerChoices'>
                 <!-- Using the scrollAndOffset() function, a higher positive number will place the target div lower on the screen. -->
                 <span class='headBannerChoiceToClick' onclick='scrollAndOffset("introInfoTextBox", 130)'>&emsp;&emsp;&emsp;About</span>
@@ -26,7 +24,7 @@
     <div id='belowHeadBanner'>
         <div id='videoBanner' class='banner'>
             <video id='videoElement' muted autoplay loop>
-                <source src='./public/camera-action-coverr-co.mp4' type='video/mp4' />
+                <source src='/public/camera-action-coverr-co.mp4' type='video/mp4' />
             </video>
         </div>
         <div id='introInfoOverallDiv'>
@@ -93,6 +91,10 @@
                     <img id='logoAtContact' src='./public/company-logo.png' alt='Logo'>
                 </div>
                 <br>
+                <div id='contactBtnDiv' class='centredContent'>
+                    <button id='contactBtn' type='button' onclick="window.location.href='/contact-form'">Contact us now!</button>
+                </div>
+                <br>
                 <div id='contactTextDiv' class='centredContent'>
                     Firefly Fictional Security Corporation,<br>
                     123 Fakefact Road,<br>
@@ -103,10 +105,6 @@
                     Tel. 01234 543210, Mon-Sat 8am-8pm<br>
                     <br>
                     Email: enquiries-and-information@firefly-fictional.org
-                </div>
-                <br>
-                <div id='contactBtnDiv' class='centredContent'>
-                    <button id='contactBtn' type='button' onclick="window.location.href='/contact-form'">Contact us now!</button>
                 </div>
             </div>
             <br><br><br><br>

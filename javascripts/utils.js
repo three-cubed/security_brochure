@@ -1,3 +1,5 @@
+const conceptsOnOffer = 'Our Services'
+
 const fs = require('fs'); // Without this, "ReferenceError: fs is not defined"
 
 function parseOrCreateJSON(data, srcFile = null) {
@@ -26,4 +28,4 @@ function JSONtoArray(JSON) {
     return array;
 }
 
-module.exports = { parseOrCreateJSON, JSONtoArray };
+module.exports = { parseOrCreateJSON, JSONtoArray, conceptsOnOffer };

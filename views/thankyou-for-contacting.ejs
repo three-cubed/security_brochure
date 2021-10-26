@@ -9,17 +9,11 @@
 </head>
 <body>
 
-    <% const titleArray =
-        <!-- titleArray consists of the page title followed by the divisional titles in order. -->
-        ['Contact made!'];
-    %>
-
-    <%- include('./partials/headBannerTop.ejs') %>
-    <%- include('./partials/headBannerBottom.ejs') %>
+    <%- include('./partials/headBannerWithLinks.ejs') %>
 
     <div class='belowHeadBannerOtherPages'>
 
-        <%- include('./partials/pageTitle.ejs', {pageTitle: titleArray[0]}) %>
+        <%- include('./partials/pageTitle.ejs', { pageTitle: 'Contact made!' }) %>
 
         <div class='centredContent'>
             <div class='flexColumn'>

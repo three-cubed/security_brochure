@@ -1,21 +1,18 @@
 const express = require('express');
 const router = express.Router();
-// const fs = require('fs');
+
+const { conceptsOnOffer } = require('../javascripts/utils.js');
 
 router.get('/', (req, res) => {
-    res.render('main');
+    res.render('main', { conceptsOnOffer: conceptsOnOffer });
 })
 
 router.get('/contact-form', (req, res) => {
-    res.render('contact-form');
+    res.render('contact-form', { conceptsOnOffer: conceptsOnOffer });
 });
 
 router.get('/thankyou-for-contacting', (req, res) => {
-    res.render('thankyou-for-contacting');
-});
-
-router.get('/other', (req, res) => {
-    res.render('other');
+    res.render('thankyou-for-contacting', { conceptsOnOffer: conceptsOnOffer });
 });
   
 router.get('/standard-pages/executive-protection-services', (req, res) => {
