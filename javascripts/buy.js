@@ -166,7 +166,7 @@ function executePurchase() {
         // console.log(resJSON.receiptInfo[0]);
         // console.log(resJSON.receiptInfo[1]);
         if (resStatus.toString()[0] === '2') {
-            Prettypay.open(resJSON.totalToCharge, {prefill: true, askAddress: false});
+            Prettypay.open(resJSON.totalToCharge, { askAddress: false });
             Prettypay.setSuccessFunction((data) => {
                 let receiptInfo = resJSON.receiptInfo;
                 receiptInfo.unshift({ 

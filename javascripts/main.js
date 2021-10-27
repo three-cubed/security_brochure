@@ -28,17 +28,6 @@ function runImageSlideshow(){
 	setTimeout('runImageSlideshow()', time);
 }
 
-function detectMobileOrNarrow() {
-	if (window.innerWidth <= 900) {
-		console.log('NARROW SCREEN')
-	} else {
-		console.log('NORMAL SCREEN');
-	}
-}
-
 window.onload = () => {
-	detectMobileOrNarrow();
 	runImageSlideshow();
 };
-
-window.onresize = detectMobileOrNarrow();

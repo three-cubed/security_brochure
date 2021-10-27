@@ -5,6 +5,9 @@ app.set('view engine', 'ejs');
 
 app.use(express.json());
 
+const favicon = require('serve-favicon');
+app.use(favicon('./public/favicon.png'));
+
 const router = require('./routes/routes');
 const toBuyRouter = require('./routes/toBuyRoutes');
 const prettypayRouter = require('./prettypay/routes/routes');
