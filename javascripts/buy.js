@@ -163,13 +163,11 @@ function executePurchase() {
     }).then(function(resJSON) {
         // console.log('resJSON.receiptInfo from purchase route');
         // console.log(resJSON.receiptInfo);
-        // console.log(resJSON.receiptInfo[0]);
-        // console.log(resJSON.receiptInfo[1]);
         if (resStatus.toString()[0] === '2') {
-            Prettypay.open(resJSON.totalToCharge, { askAddress: false });
+            Prettypay.open(resJSON.totalToCharge, { autofill: true, askAddress: false });
             Prettypay.setSuccessFunction((data) => {
                 let receiptInfo = resJSON.receiptInfo;
-                receiptInfo.unshift({ 
+                receiptInfo.unshift({
                     uniqueTransactionReference: data.uniqueTransactionReference
                 });
                 clearItemsFromBasket();

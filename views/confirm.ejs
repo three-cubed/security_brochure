@@ -28,7 +28,8 @@
                         <% if (receiptInfo !== null) { %>
                             <% for (let i = 1; i+1 < receiptInfo.length; i++) { %>
                                 <% for (const [key, value] of Object.entries(receiptInfo[i])) { %>
-                                    <%= key %>: <%= value %><br>
+                                    <% const keyString = key.charAt(0).toUpperCase() + key.slice(1); %>
+                                    <%= keyString %>: <%= value %><br>
                                 <% } %>
                                 <br>
                             <% } %>

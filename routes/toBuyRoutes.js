@@ -60,7 +60,7 @@ router.post('/purchase', function(req, res) {
             // console.log(`total = ${totalToCharge}`);
             if (totalToCharge <= 0) {
                 res.status(401).json({
-                    message: `Fictional purchase aborted by server with status 403 (forbidden): total charge of £ ${totalToCharge} is not greater than zero.`,
+                    message: `Fictional purchase aborted by server with status 401 (unauthorized): total charge of £ ${totalToCharge} is not greater than zero.`,
                     receiptInfo: 'Receipt information not applicable.'
                 });
             } else {
@@ -102,6 +102,7 @@ router.post('/postReceipt', function(req, res) {
     } catch (error) {
         console.log(error);
     }
+    res.end();
 })
 
 router.get('/confirm/:uniqueTransactionReference/:amount/:currency', (req, res) => {
