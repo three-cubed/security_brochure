@@ -15,7 +15,7 @@ images[2] = `${imagePath}countryside-car-security.jpeg`;
 images[3] = `${imagePath}security-cyber-silhouettes.jpeg`;
 images[4] = `${imagePath}masked-office-man.jpeg`;
 
-const time = 4200;	// Time for each image to show.
+const time = 3600;	// Time for each image to show.
 let i = 0;
 
 function runImageSlideshow(){

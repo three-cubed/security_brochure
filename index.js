@@ -13,6 +13,6 @@ app.use('/', router);
 app.use('/toBuy', toBuyRouter);
 app.use('/prettypay', prettypayRouter);
 
-app.listen(process.env.port||3200, () => {
+app.listen(process.env.PORT || 3200, () => {
     console.log('listening to 3200');
 });
