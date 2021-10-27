@@ -1,4 +1,4 @@
 <% let divId = divTitle.replace(/\W/g, '')+'Div' %>
 <% const divChoice = '#' + divId.charAt(0).toLowerCase() + divId.slice(1) %>
 
-<span><a class='headBannerChoiceToClick' onclick='scrollAndOffset("<%= divChoice %>", 166)'>&emsp;&emsp;&emsp;<%= divTitle %></a></span>
+<span class='headBannerChoiceWrap'><a class='headBannerChoiceToClick' onclick='scrollAndOffset("<%= divChoice %>", 166)'><%= divTitle %></a></span>

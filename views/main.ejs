@@ -12,12 +12,11 @@
         <div id='headBannerContent'>
             <br>
             <img id='logoAtTop' src="/public/company-logo.png" alt="Logo">
-            <div id='headBannerChoices'>
-                <!-- Using the scrollAndOffset() function, a higher positive number will place the target div lower on the screen. -->
-                <span class='headBannerChoiceToClick' onclick='scrollAndOffset("introInfoTextBox", 130)'>&emsp;&emsp;&emsp;About</span>
-                <span><a class='headBannerChoiceToClick' onclick='scrollAndOffset("#offersDiv", -30)'>&emsp;&emsp;&emsp;<%= conceptsOnOffer %></a></span>
-                <span><a class='headBannerChoiceToClick' onclick='scrollAndOffset("#contactDiv", 150)'>&emsp;&emsp;&emsp;Contact us</a></span>
-                <span><a class='headBannerChoiceToClick' onclick='scrollAndOffset("#mapDiv", 100)'>&emsp;&emsp;&emsp;Find us</a></span>
+            <div class='headBannerChoicesMain'>
+                    <span class='headBannerChoiceWrap'><a class='headBannerChoiceToClick' onclick='scrollAndOffset("introInfoTextBox", 130)'>About</a></span>
+                    <span class='headBannerChoiceWrap'><a class='headBannerChoiceToClick' onclick='scrollAndOffset("#offersDiv", -30)'><%= conceptsOnOffer %></a></span>
+                    <span class='headBannerChoiceWrap'><a class='headBannerChoiceToClick' onclick='scrollAndOffset("#contactDiv", 150)'>Contact us</a></span>
+                    <span class='headBannerChoiceWrap'><a class='headBannerChoiceToClick' onclick='scrollAndOffset("#mapDiv", 100)'>Find us</a></span>
             </div>
         </div>
     </div>

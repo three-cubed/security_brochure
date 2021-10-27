@@ -36,7 +36,6 @@ a, a:visited {
     justify-content: space-evenly;
     border: solid 1px black;
     margin: 6px 5vw; /* i.e. top/bottom = 6px; left/right = 5vw;*/
-    /* padding: 2px; */
     padding-top: 4px;
     padding-bottom: 5px;
     padding-left: 1px;
@@ -71,10 +70,6 @@ body {
 .boldText {
     font-weight: bold;
 }
-
-/* .borderBox {
-    box-sizing: border-box;
-} */
 
 .btn-purchase {
     font-size: 28px;
@@ -130,7 +125,7 @@ body {
 .contactBtnOtherPage {
     background-color: var(--buttonTheme);
     font-size: 20px;
-    width: 44%;
+    width: 33%;
     min-width: 220px;
     height: 55px;
     border-radius: 33%;
@@ -178,12 +173,9 @@ body {
     padding-left: 14px;
 }
 
-/* .greenRightBorder {
-    border-right: 14px solid green;
-    padding-right: 14px;
-} */
-
 #headBanner, .headBannerOtherPages {
+    display: flex;
+    width: 100%;
     background-color: var(--myGrey);
     border-bottom: 1px solid rgb(220, 220, 220);
     height: 105px;
@@ -192,16 +184,16 @@ body {
 }
 
 .headBannerOtherPages {
-    border-bottom: 1px solid rgb(222, 222, 222);
+    border-bottom: 1px solid rgb(220, 220, 220);
     width: 100%;
 } 
 
-#headBannerChoices, .headBannerChoicesOtherPages {
+.headBannerChoicesMain, .headBannerChoicesOtherPages {
     display: flex;
+    align-content: center;
     flex-wrap: wrap;
-    position: relative;
-    top: calc(-20px + -1vw);
-    left: 2vw;
+    width: 100%;
+    justify-content: flex-start;
 }
 
 .headBannerChoiceToClick {
@@ -216,17 +208,16 @@ body {
     cursor: pointer;
 }
 
-#headBannerContent, .headBannerContentOtherPages {
-    position: relative;
-    top: -40px;
-    left: 25px;
+.headBannerChoiceWrap {
+    padding: 0px 3vh;
 }
 
-/* .headBannerContentOtherPages {
+#headBannerContent, .headBannerContentOtherPages {
+    display: flex;
+    align-items: center;
+    width: 100%;
     position: relative;
-    top: -28px;
-    left: 25px;
-} */
+}
 
 #iframeDiv {
     background-color: var(--themeColour);
@@ -285,13 +276,11 @@ input {
 
 #introInfoTextBox, .infoTextBox {
     box-sizing: border-box;
-    /* background-color: white; */
     background-color: rgb(254, 254, 254);
     min-height: 325px;
     position: relative;
     top: -55px;
-    border: 1.6px solid grey; 
-    /* Was border 1px */
+    border: 1.6px solid grey;
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 0.5%;
@@ -307,11 +296,6 @@ input {
     height: 0px;
 }
 
-/* .visible {
-    transform: scale(1);
-    height: auto;
-} */
-
 .item-quantity {
     max-width: 85px;
 }
@@ -319,8 +303,6 @@ input {
 .learnMore {
     color: red !important;
     font-size: 24px;
-    /* display: block;
-    overflow: auto; */
     position: relative;
     left: -24px;
     width: 130%;
@@ -344,22 +326,21 @@ input {
 }
 
 #logoAtContact {
-    width: 100px;
-    height: 100px;
-    border: 10px solid var(--themeColour);
+    width: 84px;
+    height: 116px;
+    border: 6px solid var(--themeColour);
     margin: 13px;
 }
 
 #logoAtTop, .logoAtTopOtherPages {
-    width: 5vw;
+    width: calc(3vw + 0.75vh);
     min-width: 45px;
-    height: 5vw;
-    min-height: 45px;
-    border: 0.5vw solid var(--themeColour);
+    height: calc(4vw + 1vh);
+    min-height: 60px;
+    border: 4px solid var(--themeColour);
     z-index: 10;
     position: relative;
-    top: 32px;
-    /* top: calc(58px - 2vw); */
+    margin: calc(1vw + 2vh);
 }
 
 .logoAtTopOtherPages {
