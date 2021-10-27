@@ -113,6 +113,7 @@ body {
     min-width: 20vw;
     min-height: 50px;
     border-radius: 33%;
+    border: solid 2px var(--themeColour);
     font-size: 22px;
     background-color: var(--myGrey);
 }
@@ -120,6 +121,7 @@ body {
 #contactBtn:hover {
     background-color: rgb(188, 188, 188);
     cursor: pointer;
+    border: solid 3px var(--themeColour);
 }
 
 .contactBtnOtherPage {
