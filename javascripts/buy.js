@@ -177,8 +177,8 @@ function executePurchase() {
                     return data;
                 }
                 awaitPostReceipt().then(function(data) {
-                    // window.location.href = `/toBuy/confirm/${data.uniqueTransactionReference}/${data.amountToProcess}/${data.currency}`;
-                    window.open(`/toBuy/confirm/${data.uniqueTransactionReference}/${data.amountToProcess}/${data.currency}`);
+                    window.location.href = `/toBuy/confirm/${data.uniqueTransactionReference}/${data.amountToProcess}/${data.currency}`;
+                    // window.open(`/toBuy/confirm/${data.uniqueTransactionReference}/${data.amountToProcess}/${data.currency}`);
                 });
             });
         } else {

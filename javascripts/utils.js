@@ -5,8 +5,8 @@ const fs = require('fs'); // Without this, "ReferenceError: fs is not defined"
 function parseOrCreateJSON(data, srcFile = null) {
     try {
         return JSON.parse(data);
-    } catch (e) {
-        console.log(e);
+    } catch (err) {
+        console.log(err);
         console.log(`Failed to parse: ${srcFile}; returning parsed '[]' at parseOrCreateJSON()`);
         if (srcFile !== null) {
             try {

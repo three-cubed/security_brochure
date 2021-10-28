@@ -27,8 +27,6 @@ router.get('/buy', function(req, res) {
 });
 
 router.post('/purchase', function(req, res) {
-    // console.log(req.body);
-    // console.log('^^req.body^^')
     fs.readFile('buyables.json', function(error, dataFromBuyablesFile) {
         if (error) {
             console.log(error);
@@ -84,7 +82,6 @@ router.post('/postReceipt', async function(req, res) {
     }
     const dataArray = await parseOrCreateJSON(dataInFile, fileToRecordIn);
     const attempt = await prepareAndWriteReceiptPage(fileToRecordIn, dataArray, req.body.receiptInfo);
-    console.log(attempt);
     res.status(attempt).end();
 });
 
@@ -104,7 +101,7 @@ router.get('/confirm/:uniqueTransactionReference/:amount/:currency', (req, res) 
         amount: req.params.amount,
         currency: req.params.currency,
         receiptInfo: receiptInfo,
-        // formatAnyNumbersToString: formatAnyNumbersToString,
+        formatAnyNumbersToString: formatAnyNumbersToString,
         conceptsOnOffer: conceptsOnOffer
     });
 })

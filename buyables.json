@@ -11,7 +11,7 @@
             "id": 444,
             "name": "Event Security",
             "unitSoldBy": "per man per hour",
-            "price": 35,
+            "price": 35.5,
             "imgName": "genericImage.png"
         },
         {
