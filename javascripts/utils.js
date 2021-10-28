@@ -42,4 +42,20 @@ function prepareAndWriteReceiptPage(fileToRecordIn, dataArray, receiptInfo) {
     return 400;
 }
 
-module.exports = { parseOrCreateJSON, JSONtoArray, prepareAndWriteReceiptPage, conceptsOnOffer };
+function formatAnyNumbersToString(input) {
+    // parseFloat(number) is because some numbers actually come into the function as strings! To check, use:
+    // console.log(typeof number)
+    const number = parseFloat(input);
+    if (isNaN(number)) return input;
+    if (!Number.isInteger(number)) {
+        numberString = number.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        })
+     } else {
+        numberString = number.toLocaleString();
+     }
+     return numberString;
+}
+
+module.exports = { parseOrCreateJSON, JSONtoArray, prepareAndWriteReceiptPage, formatAnyNumbersToString, conceptsOnOffer };

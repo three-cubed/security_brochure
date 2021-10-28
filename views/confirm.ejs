@@ -33,7 +33,7 @@
                                 <% } %>
                                 <br>
                             <% } %>
-                            Total purchase: £ <%= receiptInfo[receiptInfo.length - 1].total %>
+                            Total purchase: £ <%= formatAnyNumbersToString(receiptInfo[receiptInfo.length - 1].total) %>
                         <% } %>
                     </p>
                     <br>
