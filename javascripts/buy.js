@@ -172,12 +172,13 @@ function executePurchase() {
                 });
                 clearItemsFromBasket();
                 updateTotals();
-                const finishOff = async () => {
-                    postReceipt(receiptInfo);
+                const awaitPostReceipt = async () => {
+                    await postReceipt(receiptInfo);
                     return data;
                 }
-                finishOff().then(function(data) {
-                    window.location.href = `/toBuy/confirm/${data.uniqueTransactionReference}/${data.amountToProcess}/${data.currency}`
+                awaitPostReceipt().then(function(data) {
+                    // window.location.href = `/toBuy/confirm/${data.uniqueTransactionReference}/${data.amountToProcess}/${data.currency}`;
+                    window.open(`/toBuy/confirm/${data.uniqueTransactionReference}/${data.amountToProcess}/${data.currency}`);
                 });
             });
         } else {
