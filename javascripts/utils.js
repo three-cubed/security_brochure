@@ -42,7 +42,7 @@ function prepareAndWriteReceiptPage(fileToRecordIn, dataArray, receiptInfo) {
     return 400;
 }
 
-function formatAnyNumbersToString(input) {
+function formatAnyNumberToString(input) {
     // parseFloat(number) is because some numbers actually come into the function as strings! To check, use:
     // console.log(typeof number)
     const number = parseFloat(input);
@@ -58,4 +58,4 @@ function formatAnyNumbersToString(input) {
      return numberString;
 }
 
-module.exports = { parseOrCreateJSON, JSONtoArray, prepareAndWriteReceiptPage, formatAnyNumbersToString, conceptsOnOffer };
+module.exports = { parseOrCreateJSON, JSONtoArray, prepareAndWriteReceiptPage, formatAnyNumberToString, conceptsOnOffer };

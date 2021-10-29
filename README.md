@@ -10,6 +10,13 @@ Fictional transactions are processed by Prettypay. Although it interacts with th
 
 Both this project and Prettypay record transactions. This brochure project records successful transactions in `/receipts/receipts.json`, with information on purchase items, quantities, etc.. Prettypay also records the amount, identity, time and outcome of all transactions it has processed, but is not concerned with items, quantities, etc.. Its records can be found in `/prettypay/records`.
 
+## Contact Form
+
+Submitting the contact form leads to another page, purporting to inform you that contact has been made.
+This is to give the appearance of a company site.
+By deliberate design, no actual contact is made.
+No contact form details or messages will be processed or recorded by the site.
+
 ## Attribution
 
 Unless otherwise stated, images are in the public domain with a Public Domain Certification; for details see: https://creativecommons.org/licenses/publicdomain/.

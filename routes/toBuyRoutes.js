@@ -8,7 +8,7 @@ const {
     parseOrCreateJSON,
     JSONtoArray,
     prepareAndWriteReceiptPage,
-    formatAnyNumbersToString,
+    formatAnyNumberToString,
     conceptsOnOffer
 } = require('../javascripts/utils.js');
 
@@ -101,7 +101,7 @@ router.get('/confirm/:uniqueTransactionReference/:amount/:currency', (req, res) 
         amount: req.params.amount,
         currency: req.params.currency,
         receiptInfo: receiptInfo,
-        formatAnyNumbersToString: formatAnyNumbersToString,
+        formatAnyNumberToString: formatAnyNumberToString,
         conceptsOnOffer: conceptsOnOffer
     });
 })

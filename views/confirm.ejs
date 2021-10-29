@@ -29,11 +29,11 @@
                             <% for (let i = 1; i+1 < receiptInfo.length; i++) { %>
                                 <% for (const [key, value] of Object.entries(receiptInfo[i])) { %>
                                     <% const keyString = key.charAt(0).toUpperCase() + key.slice(1); %>
-                                    <%= keyString %>: <%= formatAnyNumbersToString(value) %><br>
+                                    <%= keyString %>: <%= formatAnyNumberToString(value) %><br>
                                 <% } %>
                                 <br>
                             <% } %>
-                            Total purchase: £ <%= formatAnyNumbersToString(receiptInfo[receiptInfo.length - 1].total) %>
+                            Total purchase: £ <%= formatAnyNumberToString(receiptInfo[receiptInfo.length - 1].total) %>
                         <% } %>
                     </p>
                     <br>
@@ -43,7 +43,7 @@
 
                 <div class='receiptInfoContainer'>
                     <h3>Payment details from Prettypay</h3>
-                    <p><%= currency %>&nbsp;<%= formatAnyNumbersToString(amount) %> debited to your account.</p>
+                    <p><%= currency %>&nbsp;<%= formatAnyNumberToString(amount) %> debited to your account.</p>
                     <p>Unique transaction identifier: <%= uniqueTransactionReference %></p>
                     <br>
                 </div>
