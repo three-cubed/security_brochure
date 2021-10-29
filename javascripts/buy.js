@@ -40,8 +40,8 @@ function addToBasket(event) {
 
     let basketRow = document.createElement('div');
     basketRow.classList.add('basket-row');
-    basketRow.dataset.productId = event.target.parentElement.dataset.productId;
-    basketRow.dataset.productPrice = event.target.parentElement.dataset.productPrice;
+    basketRow.dataset.productId = event.target.parentElement.parentElement.dataset.productId;
+    basketRow.dataset.productPrice = event.target.parentElement.parentElement.dataset.productPrice;
     let basketItemsDiv = document.getElementsByClassName('basket-items-div')[0];
     let basketItems = basketItemsDiv.getElementsByClassName('basket-row');
     for (var i = 0; i < basketItems.length; i++) {
@@ -52,15 +52,15 @@ function addToBasket(event) {
     }
     var basketRowContents = `
         <div class="basket-column">
-            <img class="basket-item-image" src="${event.target.parentElement.getElementsByTagName('Img')[0].src}" width="24" height="24">
+            <img class="basket-item-image" src="${event.target.parentElement.parentElement.getElementsByTagName('Img')[0].src}" width="24" height="24">
         </div>
         <div class="basket-column centredText centredContent">
-            <span class="basket-item-title">${event.target.parentElement.dataset.productName}</span>
+            <span class="basket-item-title">${event.target.parentElement.parentElement.dataset.productName}</span>
         </div>
         <div class="item-quantity basket-column">
             <input class="item-quantity-input" type="number" value="1">
         </div>
-        <span class="item-price basket-column">@ £ ${formatNumberToString(parseFloat(event.target.parentElement.dataset.productPrice))}</span>
+        <span class="item-price basket-column">@ £ ${formatNumberToString(parseFloat(event.target.parentElement.parentElement.dataset.productPrice))}</span>
         <span class="total-this-product basket-column"></span>
         <button class="btn btn-remove" type="button">${removeBtnText}</button>`
     basketRow.innerHTML = basketRowContents;

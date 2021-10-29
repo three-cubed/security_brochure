@@ -29,6 +29,14 @@ a, a:visited {
     margin-bottom: 6px;
 }
 
+.basket-item-image {
+    align-self: center;
+    width: 56px;
+    min-width: 56px;
+    height: 33px;
+    margin: 2px;
+}
+
 .basket-row {
     display:flex;
     flex-wrap: wrap;
@@ -260,6 +268,9 @@ input {
 
 .infoTextOnBuyPage {
     font-size: 24px;
+}
+
+.infoMarginLeft {
     margin-left: 18px;
 }
 
