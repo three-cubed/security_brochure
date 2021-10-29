@@ -45,16 +45,15 @@
                                     <% if (product.note) { %>
                                         <%= product.note %> 
                                     <% }  else { %>
-                                        <div class='infoTextOnBuyPage' 
+                                        <div class='infoOnBuyPage'
                                             data-product-id='<%= product.id %>'
                                             data-product-name='<%= product.name %>'
                                             data-product-price='<%= product.price %>'
                                             >
                                             <img src='../images/<%=product.imgName %>' class='toBuyImage' />
-                                            &ensp;
-                                            <%= product.name %>
-                                            <br>
-                                            <!-- <div class='productPriceAndBuyButton'> -->
+                                            <div class='infoTextOnBuyPage'>
+                                                <%= product.name %>
+                                                <br>
                                                 <span data-product-price='<%= product.price %>' class='productPriceSpan'></span>
                                                 <% if (product.unitSoldBy) { %>
                                                     <span class='productPriceNote'>
@@ -62,7 +61,7 @@
                                                     </span>
                                                 <% } %>
                                                 <br><button type='button' class='addToBasketBtn' onclick='addToBasket(event)'>Add to basket</button></button>
-                                            <!-- </div> -->
+                                            </div>
                                         </div>
                                         <% productArray.push(product) %>
                                     <% } %>

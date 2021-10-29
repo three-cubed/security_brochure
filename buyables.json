@@ -31,35 +31,35 @@
             "name": "Basic Security Training",
             "unitSoldBy": "one day",
             "price": 240,
-            "imgName": "genericImage.png"
+            "imgName": "security-training-courses/basic-security.jpg"
         },
         {
             "id": 777,
             "name": "Event Security Training",
             "unitSoldBy": "two days",
             "price": 480,
-            "imgName": "genericImage.png"
+            "imgName": "security-training-courses/event-security.jpg"
         },
         {
             "id": 888,
             "name": "Event Security Refresher Training",
             "unitSoldBy": "four hours",
             "price": 100,
-            "imgName": "genericImage.png"
+            "imgName": "security-training-courses/event-security.jpg"
         },
         {
             "id": 999,
             "name": "Close Protection Training",
             "unitSoldBy": "ten days",
             "price": 2699,
-            "imgName": "genericImage.png"
+            "imgName": "security-training-courses/close-protection.jpg"
         },
         {
             "id": 1111,
             "name": "Close Protection Refresher Training",
             "unitSoldBy": "two days",
             "price": 312,
-            "imgName": "genericImage.png"
+            "imgName": "security-training-courses/close-protection.jpg"
         }
     ],
     "Security Consultancy Services": [
@@ -68,14 +68,14 @@
             "name": "Security consultancy review",
             "unitSoldBy": "per consultant per week",
             "price": 1200,
-            "imgName": "genericImage.png"
+            "imgName": "security-consultancy/standard-consultancy.jpg"
         },
         {
             "id": 222,
             "name": "Deep strategic security consultancy",
             "unitSoldBy": "per consultant per week",
             "price": 2000,
-            "imgName": "genericImage.png"
+            "imgName": "security-consultancy/strategic-consultancy.jpg"
         }
     ]
 }

@@ -251,11 +251,16 @@ input {
     font-size: 28px;
 }
 
+.infoOnBuyPage {
+    display: flex;
+    margin-top: 18px;
+    margin-bottom: 26px;
+    max-width: 96vw;
+}
+
 .infoTextOnBuyPage {
     font-size: 24px;
-    margin-top: 18px;
-    margin-bottom: 18px;
-    max-width: 96vw;
+    margin-left: 18px;
 }
 
 #introInfoTextBox {
@@ -467,9 +472,11 @@ textarea {
 }
 
 .toBuyImage {
-    height: 60px;
-    width: 120px;
+    height: 66px;
+    width: 112px;
+    min-width: 112px; /* Affects mobile display, preventing some images from being squashed. */
     border-radius: 4%;
+    align-self: center;
 }
 
 #videoElement {
