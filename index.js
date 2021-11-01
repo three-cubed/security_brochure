@@ -10,11 +10,12 @@ app.use(favicon('./public/favicon.png'));
 
 const router = require('./routes/routes');
 const toBuyRouter = require('./routes/toBuyRoutes');
-const prettypayRouter = require('./prettypay/routes/routes');
 
 app.use('/', router);
 app.use('/toBuy', toBuyRouter);
-app.use('/prettypay', prettypayRouter);
+
+const prettypay = require('prettypay');
+app.use(prettypay);
 
 app.listen(process.env.PORT || 3200, () => {
     console.log('listening to 3200');
