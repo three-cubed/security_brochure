@@ -4,6 +4,7 @@
     --myGrey: rgb(242, 242, 242);
     --themeColour: green;
     --buttonTheme: #93c572;
+    --buttonThemePressed: rgb(1, 110, 1);
     --lumiTheme: #a6ff00;
 }
 
@@ -102,9 +103,23 @@ body {
     margin-bottom: 20px;
 }
 
-.btnToBuyPage:hover, .btn-purchase:hover, .linkBtn:hover {
+.addToBasketBtn:hover,
+.btn-remove:hover,
+.btnToBuyPage:hover,
+.btn-purchase:hover,
+.contactBtnOtherPage:hover,
+.linkBtn:hover {
     background-color: var(--themeColour);
     cursor: pointer;
+}
+
+.addToBasketBtn:active,
+.btn-remove:active,
+.btnToBuyPage:active,
+.btn-purchase:active,
+.contactBtnOtherPage:active,
+.linkBtn:active {
+    background-color: var(--buttonThemePressed);
 }
 
 .centredContent {
@@ -140,17 +155,6 @@ body {
     border-radius: 33%;
     margin-top: 10px;
     margin-bottom: 20px;
-}
-
-.contactBtnOtherPage:hover {
-    background-color: rgb(1, 163, 1);
-    cursor: pointer;
-}
-
-.contactBtnOtherPage:active {
-    background-color: rgb(1, 80, 1);
-    border: solid 2px black;
-    cursor: pointer;
 }
 
 #contactBtnDiv {
