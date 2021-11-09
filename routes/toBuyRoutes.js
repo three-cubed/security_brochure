@@ -2,17 +2,15 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
-// const conceptsOnOffer = 'Our Services';
-
 const {
     parseOrCreateJSON,
     JSONtoArray,
     prepareAndWriteReceiptPage,
     formatAnyNumberToString,
-    conceptsOnOffer
+    conceptsOnOffer,
 } = require('../javascripts/utils.js');
 
-router.get('/buy', function(req, res) {
+router.get('/buy', (req, res) => {
     let data;
     try {
         data = fs.readFileSync('buyables.json');
@@ -22,12 +20,12 @@ router.get('/buy', function(req, res) {
     }
     res.render('buy', {
         buyablesJSON: JSON.parse(data),
-        conceptsOnOffer: conceptsOnOffer
+        conceptsOnOffer: conceptsOnOffer,
     });
 });
 
-router.post('/purchase', function(req, res) {
-    fs.readFile('buyables.json', function(error, dataFromBuyablesFile) {
+router.post('/purchase', (req, res) => {
+    fs.readFile('buyables.json', (error, dataFromBuyablesFile) => {
         if (error) {
             console.log(error);
             res.status(500).end()
@@ -35,44 +33,42 @@ router.post('/purchase', function(req, res) {
             const buyablesJSON = JSON.parse(dataFromBuyablesFile);
             const backendDataArray = JSONtoArray(buyablesJSON);
             let totalToCharge = 0;
-            let receiptInfo = [];
-            req.body.items.forEach(function(itemBeingBought) {
+            const receiptInfo = [];
+            req.body.items.forEach((itemBeingBought) => {
                 const matchingBackendData = backendDataArray.find(
-                    function(backendDataItem) {
-                        return backendDataItem.id == itemBeingBought.id
-                    })
+                    (backendDataItem) => backendDataItem.id == itemBeingBought.id)
                 const subtotal = itemBeingBought.quantity * matchingBackendData.price;
                 totalToCharge += subtotal;
                 receiptInfo.push({
-                    'item': matchingBackendData.name,
+                    item: matchingBackendData.name,
                     'price per item': matchingBackendData.price,
-                    'quantity': itemBeingBought.quantity,
-                    'sub-total': subtotal
+                    quantity: itemBeingBought.quantity,
+                    'sub-total': subtotal,
                 });
-            })
+            });
             receiptInfo.push({
-                'total': `${totalToCharge}`
-            })
+                total: `${totalToCharge}`,
+            });
             // console.log(`total = ${totalToCharge}`);
             if (totalToCharge <= 0) {
                 res.status(401).json({
                     message: `Fictional purchase aborted by server with status 401 (unauthorized): total charge of £ ${totalToCharge} is not greater than zero.`,
-                    receiptInfo: 'Receipt information not applicable.'
+                    receiptInfo: 'Receipt information not applicable.',
                 });
             } else {
                 res.json({
                     totalToCharge: totalToCharge,
                     message: `Prettypay to process total charge of ${totalToCharge}`,
-                    receiptInfo: receiptInfo
-                })
+                    receiptInfo: receiptInfo,
+                });
             }
         }
-    })
-})
+    });
+});
 
-router.post('/postReceipt', async function(req, res) {
-    fileToRecordIn = './receipts/receipts.json';
-    let dataInFile = '[]'
+router.post('/postReceipt', async (req, res) => {
+    const fileToRecordIn = './receipts/receipts.json';
+    let dataInFile = '[]';
     try {
         dataInFile = fs.readFileSync(fileToRecordIn);
     } catch (error) {
@@ -86,11 +82,10 @@ router.post('/postReceipt', async function(req, res) {
 });
 
 router.get('/confirm/:uniqueTransactionReference/:amount/:currency', (req, res) => {
-
     let receiptInfo = null;
-    let uniqueTransactionReference = req.params.uniqueTransactionReference;
+    const uniqueTransactionReference = req.params.uniqueTransactionReference;
     const dataInFile = fs.readFileSync('./receipts/receipts.json');
-    dataArray = parseOrCreateJSON(dataInFile, './receipts/receipts.json');
+    const dataArray = parseOrCreateJSON(dataInFile, './receipts/receipts.json');
     for (let i = 0; i < dataArray.length; i++) {
         if (dataArray[i][0].uniqueTransactionReference === uniqueTransactionReference) {
             receiptInfo = dataArray[i];
@@ -102,8 +97,8 @@ router.get('/confirm/:uniqueTransactionReference/:amount/:currency', (req, res) 
         currency: req.params.currency,
         receiptInfo: receiptInfo,
         formatAnyNumberToString: formatAnyNumberToString,
-        conceptsOnOffer: conceptsOnOffer
+        conceptsOnOffer: conceptsOnOffer,
     });
-})
+});
 
 module.exports = router;

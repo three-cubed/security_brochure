@@ -8,16 +8,16 @@ function addEventListeners() {
     document.getElementsByClassName('logoAtTopOtherPages')[0].addEventListener('click', goHome);
 
     const btnsToBuyPage = document.getElementsByClassName('btnToBuyPage');
-    for (let btn of btnsToBuyPage) {
+    for (const btn of btnsToBuyPage) {
         btn.innerText = 'Engage our services!';
         btn.addEventListener('click', () => {
-            window.location.href='/toBuy/buy';
+            window.location.href = '/toBuy/buy';
         });
     }
 }
 
 function scrollAndOffset(place, pixels) {
-    let headPoint = document.getElementsByClassName('headBannerOtherPages')[0]
+    const headPoint = document.getElementsByClassName('headBannerOtherPages')[0];
     location.hash = `${headPoint}`;
     // Starting with headpoint is necessary to overcome the bug of
     // unexpected behaviour when the target div is already displayed on some part of the screen.
@@ -26,5 +26,5 @@ function scrollAndOffset(place, pixels) {
 }
 
 function goHome() {
-    window.location.href = "../";
+    window.location.href = '../';
 }

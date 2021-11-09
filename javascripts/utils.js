@@ -1,4 +1,4 @@
-const conceptsOnOffer = 'Our Services'
+const conceptsOnOffer = 'Our Services';
 
 const fs = require('fs'); // Without this, "ReferenceError: fs is not defined"
 
@@ -20,7 +20,7 @@ function parseOrCreateJSON(data, srcFile = null) {
 }
 
 function JSONtoArray(JSON) {
-    let array = [];
+    const array = [];
     for (const [key, items] of Object.entries(JSON)) {
         items.forEach(item => {
             array.push(item)
@@ -45,17 +45,25 @@ function prepareAndWriteReceiptPage(fileToRecordIn, dataArray, receiptInfo) {
 function formatAnyNumberToString(input) {
     // parseFloat(number) is because some numbers actually come into the function as strings! To check, use:
     // console.log(typeof number)
+    // Note that numbers are nonetheless coming through to buy.js from event.target... as numbers.
     const number = parseFloat(input);
+    let numberString;
     if (isNaN(number)) return input;
     if (!Number.isInteger(number)) {
         numberString = number.toLocaleString(undefined, {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
-        })
-     } else {
+        });
+    } else {
         numberString = number.toLocaleString();
-     }
-     return numberString;
+    }
+    return numberString;
 }
 
-module.exports = { parseOrCreateJSON, JSONtoArray, prepareAndWriteReceiptPage, formatAnyNumberToString, conceptsOnOffer };
+module.exports = {
+    parseOrCreateJSON,
+    JSONtoArray,
+    prepareAndWriteReceiptPage,
+    formatAnyNumberToString,
+    conceptsOnOffer
+};
