@@ -34,7 +34,7 @@ router.post('/purchase', (req, res) => {
             const backendDataArray = JSONtoArray(buyablesJSON);
             let totalToCharge = 0;
             const receiptInfo = [];
-            req.body.items.forEach((itemBeingBought) => {
+            req.body.buyables.forEach((itemBeingBought) => {
                 const matchingBackendData = backendDataArray.find(
                     (backendDataItem) => backendDataItem.id == itemBeingBought.id)
                 const subtotal = itemBeingBought.quantity * matchingBackendData.price;

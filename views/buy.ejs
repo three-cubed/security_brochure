@@ -22,49 +22,49 @@
             </p>
             <br>
 
-            <div class='productsDivOuter'>
-                <div class='productsDivInner'>
+            <div class='buyablesDivOuter'>
+                <div class='buyablesDivInner'>
 
-                    <% let productArray = []%>
-                    <!-- remove productArray lines if not used. -->
-                    <% for (const [key, products] of Object.entries(buyablesJSON)) { %>
-                        <% let divProductType = JSON.stringify(key).replace(/\W/g, '')+'Div' %>
-                        <% divProductType = divProductType.charAt(0).toLowerCase() + divProductType.slice(1) %>
-                        <div id='<%= divProductType %>'>
+                    <% let buyableArray = []%>
+                    <!-- remove buyableArray lines if not used. -->
+                    <% for (const [key, buyables] of Object.entries(buyablesJSON)) { %>
+                        <% let divBuyableType = JSON.stringify(key).replace(/\W/g, '')+'Div' %>
+                        <% divBuyableType = divBuyableType.charAt(0).toLowerCase() + divBuyableType.slice(1) %>
+                        <div id='<%= divBuyableType %>'>
                             
                             <div class='groupTitleSpan'>
                                 <h2>
-                                    <span id='<%= divProductType %>OpenCloseIcon' class='openCloseIcon'>&#9662;</span>
-                                    <span id='<%= divProductType %>Title'>&nbsp;<%= JSON.stringify(key).replace(/\"/g, "") %></span>
+                                    <span id='<%= divBuyableType %>OpenCloseIcon' class='openCloseIcon'>&#9662;</span>
+                                    <span id='<%= divBuyableType %>Title'>&nbsp;<%= JSON.stringify(key).replace(/\"/g, "") %></span>
                                 </h2>
                             </div>
 
-                            <div id='<%= divProductType %>VisibilityDiv' class='invisible'>
+                            <div id='<%= divBuyableType %>VisibilityDiv' class='invisible'>
 
-                                <% products.forEach(product => { %>
-                                    <% if (product.note) { %>
-                                        <%= product.note %> 
+                                <% buyables.forEach(buyable => { %>
+                                    <% if (buyable.note) { %>
+                                        <%= buyable.note %> 
                                     <% }  else { %>
                                         <div class='infoOnBuyPage'
-                                            data-product-id='<%= product.id %>'
-                                            data-product-name='<%= product.name %>'
-                                            data-product-price='<%= product.price %>'
+                                            data-Buyable-id='<%= buyable.id %>'
+                                            data-Buyable-name='<%= buyable.name %>'
+                                            data-Buyable-price='<%= buyable.price %>'
                                             >
-                                            <img src='../images/<%=product.imgName %>' class='toBuyImage' />
+                                            <img src='../images/<%= buyable.imgName %>' class='toBuyImage' />
                                             <div class='infoTextOnBuyPage infoMarginLeft'>
-                                                <%= product.name %>
+                                                <%= buyable.name %>
                                                 <br>
-                                                <span data-product-price='<%= product.price %>' class='productPriceSpan'></span>
-                                                <% if (product.unitSoldBy) { %>
-                                                    <span class='productPriceNote'>
-                                                        <small><small>(<%= product.unitSoldBy %>)</small></small>
+                                                <span data-Buyable-price='<%= buyable.price %>' class='buyablePriceSpan'></span>
+                                                <% if (buyable.unitSoldBy) { %>
+                                                    <span class='buyablePriceNote'>
+                                                        <small><small>(<%= buyable.unitSoldBy %>)</small></small>
                                                     </span>
                                                 <% } %>
                                                 <br>
                                                 <button type='button' class='addToBasketBtn' onclick='addToBasket(event)'>Add to basket</button>
                                             </div>
                                         </div>
-                                        <% productArray.push(product) %>
+                                        <% buyableArray.push(buyable) %>
                                     <% } %>
                                 <% }) %>
 
@@ -78,7 +78,7 @@
 
             <div id='shopping basket'>
                 <h2 class="section-header centredText">&ensp;🧺&ensp;Your Basket</h2>
-                <!-- <div class="basket-individual-product">
+                <!-- <div class="basket-individual-Buyable">
                     <span class="basket-header basket-column">ITEM</span>
                     <span class="basket-header basket-column"></span>
                     <span class="basket-header basket-column">QUANTITY</span>
@@ -86,7 +86,7 @@
                     <span class="basket-header basket-column">SUB-TOTAL</span>
                     <span class="basket-header basket-column"></span>
                 </div> -->
-                <div class="basket-items-div infoTextOnBuyPage">
+                <div class="basket-buyables-div infoTextOnBuyPage">
                     <!-- This will be filled by DOM manipulation as items are cliked upon for purchase. -->
                 </div>
                 <div class="basket-total">

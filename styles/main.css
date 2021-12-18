@@ -441,18 +441,18 @@ input {
     border-radius: 2%;
 }
 
-.productPriceNote {
+.buyablePriceNote {
     min-width: 50%;
     margin-left: auto;
 }
 
-.productsDivOuter {
+.buyablesDivOuter {
     display: flex;
     justify-content: center;
     background-color: var(--themeColour);
 }
 
-.productsDivInner {
+.buyablesDivInner {
     background-color: white;
     display: inline-block;
     padding-left: 3vw;

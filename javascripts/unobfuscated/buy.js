@@ -13,14 +13,13 @@ if (document.readyState === 'loading') {
 const removeBtnText = 'Remove from basket';
 
 function addPrices() {
-    const productPriceSpans = document.getElementsByClassName('productPriceSpan');
-    for (let i = 0; i < productPriceSpans.length; i++) {
-        productPriceSpans[i].innerHTML = `£&thinsp;${formatNumberToString(productPriceSpans[i].dataset.productPrice)}`;
+    const buyablePriceSpans = document.getElementsByClassName('buyablePriceSpan');
+    for (let i = 0; i < buyablePriceSpans.length; i++) {
+        buyablePriceSpans[i].innerHTML = `£&thinsp;${formatNumberToString(buyablePriceSpans[i].dataset.buyablePrice)}`;
     }
 }
 
 function addEventListeners() {
-    // console.log(document.getElementsByClassName('btn-purchase')[0]);
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', executePurchase);
     const groupTitleSpans = document.getElementsByClassName('groupTitleSpan');
     for (let i = 0; i < groupTitleSpans.length; i++) {
@@ -32,57 +31,55 @@ function addEventListeners() {
 }
 
 function addToBasket(event) {
-    // title, price, imageSrc, id
     // console.log(`Image source ${event.target.parentElement.getElementsByTagName('Img')[0].src}`);
-    // console.log(`Prod. Name: ${event.target.parentElement.dataset.productName}`);
-    // console.log(`Prod. Identity: ${event.target.parentElement.dataset.productId}`);
-    // console.log(`Prod. Price: £ ${event.target.parentElement.dataset.productPrice}`);
+    // console.log(`Prod. Name: ${event.target.parentElement.dataset.buyableName}`);
+    // console.log(`Prod. Identity: ${event.target.parentElement.dataset.buyableId}`);
+    // console.log(`Prod. Price: £ ${event.target.parentElement.dataset.buyablePrice}`);
 
     const basketRow = document.createElement('div');
     basketRow.classList.add('basket-row');
-    basketRow.dataset.productId = event.target.parentElement.parentElement.dataset.productId;
-    basketRow.dataset.productPrice = event.target.parentElement.parentElement.dataset.productPrice;
-    const basketItemsDiv = document.getElementsByClassName('basket-items-div')[0];
-    const basketItems = basketItemsDiv.getElementsByClassName('basket-row');
-    for (let i = 0; i < basketItems.length; i++) {
-        console.log(basketItems[i].dataset.productId);
-        console.log(event.target.parentElement.parentElement.dataset.productId);
-        if (basketItems[i].dataset.productId === event.target.parentElement.parentElement.dataset.productId) {
+    basketRow.dataset.buyableId = event.target.parentElement.parentElement.dataset.buyableId;
+    basketRow.dataset.buyablePrice = event.target.parentElement.parentElement.dataset.buyablePrice;
+    const basketBuyablesDiv = document.getElementsByClassName('basket-buyables-div')[0];
+    const basketBuyables = basketBuyablesDiv.getElementsByClassName('basket-row');
+    for (let i = 0; i < basketBuyables.length; i++) {
+        // console.log(basketBuyables[i].dataset.buyableId);
+        // console.log(event.target.parentElement.parentElement.dataset.buyableId);
+        if (basketBuyables[i].dataset.buyableId === event.target.parentElement.parentElement.dataset.buyableId) {
             alert('This has already been put in the basket! If you want more, increase the stated quantity.');
             return;
         }
     }
     const basketRowContents = `
         <div class="basket-column">
-            <img class="basket-item-image" src="${event.target.parentElement.parentElement.getElementsByTagName('Img')[0].src}" width="24" height="24">
+            <img class="basket-buyable-image" src="${event.target.parentElement.parentElement.getElementsByTagName('Img')[0].src}" width="24" height="24">
         </div>
         <div class="basket-column centredText centredContent">
-            <span class="basket-item-title">${event.target.parentElement.parentElement.dataset.productName}</span>
+            <span class="basket-buyable-title">${event.target.parentElement.parentElement.dataset.buyableName}</span>
         </div>
-        <div class="item-quantity basket-column">
-            <input class="item-quantity-input" type="number" value="1">
+        <div class="buyable-quantity basket-column">
+            <input class="buyable-quantity-input" type="number" value="1">
         </div>
-        <span class="item-price basket-column">@ £ ${formatNumberToString(parseFloat(event.target.parentElement.parentElement.dataset.productPrice))}</span>
-        <span class="total-this-product basket-column"></span>
+        <span class="buyable-price basket-column">@ £ ${formatNumberToString(parseFloat(event.target.parentElement.parentElement.dataset.buyablePrice))}</span>
+        <span class="total-this-buyable basket-column"></span>
         <button class="btn btn-remove" type="button">${removeBtnText}</button>`;
     basketRow.innerHTML = basketRowContents;
-    basketItemsDiv.append(basketRow);
-    basketRow.getElementsByClassName('btn-remove')[0].addEventListener('click', removeProductFromBasket);
-    basketRow.getElementsByClassName('item-quantity-input')[0].addEventListener('change', checkValidQuantity);
-    basketRow.getElementsByClassName('item-quantity-input')[0].addEventListener('keyup', checkValidQuantity);
+    basketBuyablesDiv.append(basketRow);
+    basketRow.getElementsByClassName('btn-remove')[0].addEventListener('click', removeBuyableFromBasket);
+    basketRow.getElementsByClassName('buyable-quantity-input')[0].addEventListener('change', checkValidQuantity);
+    basketRow.getElementsByClassName('buyable-quantity-input')[0].addEventListener('keyup', checkValidQuantity);
     updateTotals();
     window.scrollTo(0, document.body.scrollHeight);
 }
 
-function removeProductFromBasket(event) {
+function removeBuyableFromBasket(event) {
     event.target.parentElement.remove();
     updateTotals();
 }
 
 function checkValidQuantity(event) {
-    // console.log(typeof event.target.value);
     if (isNaN(event.target.value)) {
-        // Actually should not be possible for this input as type="number" but included for thoroughness.
+        // Actually should not be possible for this input as type = "number" but included for thoroughness.
         // Note nonetheless that paradoxically console.log(typeof event.target.value) will return 'string'.
         alert(`Error: Ensure you use a valid numerical quantity! If you no longer want this, simply click "${removeBtnText}".`);
     } else if (event.target.value < 1) {
@@ -96,19 +93,18 @@ function checkValidQuantity(event) {
 }
 
 function updateTotals() {
-    const basketItemsDiv = document.getElementsByClassName('basket-items-div')[0]
-    const basketRows = basketItemsDiv.getElementsByClassName('basket-row')
+    const basketBuyablesDiv = document.getElementsByClassName('basket-buyables-div')[0]
+    const basketRows = basketBuyablesDiv.getElementsByClassName('basket-row')
     let total = 0
     for (let i = 0; i < basketRows.length; i++) {
         const basketRow = basketRows[i];
-        const quantity = basketRow.getElementsByClassName('item-quantity-input')[0].value;
-        const totalThisProduct = basketRow.dataset.productPrice * quantity;
-        basketRow.getElementsByClassName('total-this-product')[0].innerText = ` = £ ${formatNumberToString(totalThisProduct)}`;
-        total += (basketRow.dataset.productPrice * quantity);
+        const quantity = basketRow.getElementsByClassName('buyable-quantity-input')[0].value;
+        const totalThisBuyable = basketRow.dataset.buyablePrice * quantity;
+        basketRow.getElementsByClassName('total-this-buyable')[0].innerText = ` = £ ${formatNumberToString(totalThisBuyable)}`;
+        total += (basketRow.dataset.buyablePrice * quantity);
     }
     total = Math.round(total * 100) / 100;
     const totalString = formatNumberToString(total);
-    // console.log(`buy.js updateTotals() says: totalString = ${totalString}`);
     document.getElementsByClassName('basket-total-price')[0].innerText = `£ ${totalString}`;
 }
 
@@ -130,25 +126,20 @@ function formatNumberToString(number) { // Also found in utils.js as fomratANyNu
 }
 
 function executePurchase() {
-    const items = [];
-    const basketRows = document.getElementsByClassName('basket-items-div')[0].getElementsByClassName('basket-row')
+    const buyables = [];
+    const basketRows = document.getElementsByClassName('basket-buyables-div')[0].getElementsByClassName('basket-row')
     // while (basketRows.length > 0) { // version a
     for (let i = 0; i < basketRows.length; i++) { // version b
-        // const quantity = basketRows[0].getElementsByClassName('item-quantity-input')[0].value; // version a
-        // const id = basketRows[0].dataset.productId; version a
-        const quantity = basketRows[i].getElementsByClassName('item-quantity-input')[0].value; // version b
-        const id = basketRows[i].dataset.productId; // version b
-        // console.log(`buy.js executePurchase() says i = ${i}`); // version b
-        // console.log(`buy.js executePurchase() says: quantity, id: ${quantity, id}`);
-        items.push({
+        // const quantity = basketRows[0].getElementsByClassName('buyable-quantity-input')[0].value; // version a
+        // const id = basketRows[0].dataset.buyableId; version a
+        const quantity = basketRows[i].getElementsByClassName('buyable-quantity-input')[0].value; // version b
+        const id = basketRows[i].dataset.buyableId; // version b
+        buyables.push({
             id: id,
             quantity: quantity
         })
-        // console.log(`Product identity:${id}, quantity:${quantity}`);
         // basketRows[0].remove(); // version a
     }
-    // console.log(`executePurchase items object for toBuyRoutes:`)
-    // console.log(items)
     let resStatus = 0;
     fetch('/toBuy/purchase', {
         method: 'POST',
@@ -157,15 +148,12 @@ function executePurchase() {
             'Accept': 'application/json'
         },
         body: JSON.stringify({
-            items: items
+            buyables: buyables
         })
     }).then((res) => {
-        // alert(res.status);
         resStatus = res.status;
         return res.json();
     }).then((resJSON) => {
-        // console.log('resJSON.receiptInfo from purchase route');
-        // console.log(resJSON.receiptInfo);
         if (resStatus.toString()[0] === '2') {
             Prettypay.open(resJSON.totalToCharge, { askAddress: false });
             Prettypay.setSuccessFunction((data) => {
@@ -173,7 +161,7 @@ function executePurchase() {
                 receiptInfo.unshift({
                     uniqueTransactionReference: data.uniqueTransactionReference
                 });
-                clearItemsFromBasket();
+                clearBuyablesFromBasket();
                 updateTotals();
                 const awaitPostReceipt = async () => {
                     await postReceipt(receiptInfo);
@@ -192,8 +180,8 @@ function executePurchase() {
     })
 }
 
-function clearItemsFromBasket() {
-    const basketRows = document.getElementsByClassName('basket-items-div')[0].getElementsByClassName('basket-row');
+function clearBuyablesFromBasket() {
+    const basketRows = document.getElementsByClassName('basket-buyables-div')[0].getElementsByClassName('basket-row');
     while (basketRows.length > 0) {
         basketRows[0].remove();
     }
@@ -213,7 +201,6 @@ function postReceipt(receiptInfo) {
 }
 
 function changeDivVisibility(id) {
-    // console.log(id)
     const targetVisibilityElement = document.getElementById(`${id}VisibilityDiv`);
     const targetTextElement = document.getElementById(`${id}OpenCloseIcon`);
     targetVisibilityElement.classList.toggle('invisible');
