@@ -17,6 +17,13 @@ This is to give the appearance of a company site.
 By deliberate design, no actual contact is made.
 No contact form details or messages will be received, let alone processed or recorded, by the site.
 
+## Tests
+
+To use the tests, you must have first cloned the repository and entered `npm install`.
+
+To then run the tests, start up the programme in the terminal using `npm start`.
+Then, in a new terminal, enter `npm test`.
+
 ## Attribution
 
 Unless otherwise stated, images are in the public domain with a Public Domain Certification; for details see: [creativecommons.org/licenses/publicdomain](https://creativecommons.org/licenses/publicdomain/).
