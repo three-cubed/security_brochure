@@ -39,3 +39,6 @@ The licence states:
 > You do not need to ask permission from or provide credit to the videographer or Coverr.co, although it is appreciated when possible.* 
 
 For more details, see: https://coverr.co/license.
+
+## Copyright
+Ⓒ Full Copright. All rights reserved.
