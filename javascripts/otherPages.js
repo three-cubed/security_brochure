@@ -8,12 +8,12 @@ function addEventListeners() {
     document.getElementsByClassName('logoAtTopOtherPages')[0].addEventListener('click', goHome);
 
     const btnsToBuyPage = document.getElementsByClassName('btnToBuyPage');
-    for (const btn of btnsToBuyPage) {
+    Object.values(btnsToBuyPage).forEach ((btn) => {
         btn.innerText = 'Engage our services!';
         btn.addEventListener('click', () => {
             window.location.href = '/toBuy/buy';
         });
-    }
+    });
 }
 
 function scrollAndOffset(place, pixels) {

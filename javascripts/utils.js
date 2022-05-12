@@ -19,13 +19,13 @@ function parseOrCreateJSON(data, srcFile = null) {
     }
 }
 
-function JSONtoArray(JSON) {
+function JSONtoArray(JSON) { // This function is used in toBuyRoutes.js
     const array = [];
-    for (const [key, items] of Object.entries(JSON)) {
-        items.forEach((item) => {
+    Object.values(JSON).forEach((itemsArray) => {
+        itemsArray.forEach((item) => {
             array.push(item);
         });
-    }
+    })
     return array;
 }
 
