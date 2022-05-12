@@ -24,10 +24,10 @@ function addEventListeners() {
     const groupTitleSpans = document.getElementsByClassName('groupTitleSpan');
     for (let i = 0; i < groupTitleSpans.length; i++) {
         const id = groupTitleSpans[i].parentElement.id;
-        groupTitleSpans[i].addEventListener('click', ()=> {
+        groupTitleSpans[i].addEventListener('click', () => {
             changeDivVisibility(id);
         });
-    };
+    }
 }
 
 function addToBasket(event) {
@@ -93,9 +93,9 @@ function checkValidQuantity(event) {
 }
 
 function updateTotals() {
-    const basketBuyablesDiv = document.getElementsByClassName('basket-buyables-div')[0]
-    const basketRows = basketBuyablesDiv.getElementsByClassName('basket-row')
-    let total = 0
+    const basketBuyablesDiv = document.getElementsByClassName('basket-buyables-div')[0];
+    const basketRows = basketBuyablesDiv.getElementsByClassName('basket-row');
+    let total = 0;
     for (let i = 0; i < basketRows.length; i++) {
         const basketRow = basketRows[i];
         const quantity = basketRow.getElementsByClassName('buyable-quantity-input')[0].value;
@@ -127,7 +127,7 @@ function formatNumberToString(number) { // Also found in utils.js as fomratANyNu
 
 function executePurchase() {
     const buyables = [];
-    const basketRows = document.getElementsByClassName('basket-buyables-div')[0].getElementsByClassName('basket-row')
+    const basketRows = document.getElementsByClassName('basket-buyables-div')[0].getElementsByClassName('basket-row');
     // while (basketRows.length > 0) { // version a
     for (let i = 0; i < basketRows.length; i++) { // version b
         // const quantity = basketRows[0].getElementsByClassName('buyable-quantity-input')[0].value; // version a
@@ -137,7 +137,7 @@ function executePurchase() {
         buyables.push({
             id: id,
             quantity: quantity
-        })
+        });
         // basketRows[0].remove(); // version a
     }
     let resStatus = 0;
@@ -166,7 +166,7 @@ function executePurchase() {
                 const awaitPostReceipt = async () => {
                     await postReceipt(receiptInfo);
                     return data;
-                }
+                };
                 awaitPostReceipt().then((dataReturned) => {
                     window.location.href = `/toBuy/confirm/${dataReturned.uniqueTransactionReference}/${dataReturned.amountToProcess}/${dataReturned.currency}`;
                     // window.open(`/toBuy/confirm/${dataReturned.uniqueTransactionReference}/${dataReturned.amountToProcess}/${dataReturned.currency}`);
@@ -177,7 +177,7 @@ function executePurchase() {
         }
     }).catch((error) => {
         console.error(error);
-    })
+    });
 }
 
 function clearBuyablesFromBasket() {

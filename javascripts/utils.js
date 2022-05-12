@@ -22,9 +22,9 @@ function parseOrCreateJSON(data, srcFile = null) {
 function JSONtoArray(JSON) {
     const array = [];
     for (const [key, items] of Object.entries(JSON)) {
-        items.forEach(item => {
-            array.push(item)
-        })
+        items.forEach((item) => {
+            array.push(item);
+        });
     }
     return array;
 }
