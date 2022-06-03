@@ -20,13 +20,13 @@ function parseOrCreateJSON(data, srcFile = null) {
 }
 
 function JSONtoArray(JSON) { // This function is used in toBuyRoutes.js
-    const array = [];
+    const resultArray = [];
     Object.values(JSON).forEach((itemsArray) => {
         itemsArray.forEach((item) => {
-            array.push(item);
+            resultArray.push(item);
         });
     })
-    return array;
+    return resultArray;
 }
 
 function prepareAndWriteReceiptPage(fileToRecordIn, dataArray, receiptInfo) {
